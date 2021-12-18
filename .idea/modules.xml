@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AppMobile-PholapSC.iml" filepath="$PROJECT_DIR$/.idea/AppMobile-PholapSC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PholapSC.iml" filepath="$PROJECT_DIR$/.idea/modules/PholapSC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PholapSC.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PholapSC.app.iml" />
     </modules>
   </component>
 </project>

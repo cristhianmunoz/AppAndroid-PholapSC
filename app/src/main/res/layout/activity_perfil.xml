@@ -33,6 +33,7 @@
                 android:id="@+id/imgViewBackBarPerfil"
                 android:layout_width="36dp"
                 android:layout_height="33dp"
+                android:layout_marginStart="10dp"
                 app:layout_constraintBottom_toBottomOf="@+id/toolBarPerfil"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/toolBarPerfil"

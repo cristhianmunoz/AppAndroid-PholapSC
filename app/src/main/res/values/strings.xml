@@ -18,4 +18,8 @@
     <string name="emailPerfil">michael@jordan.com</string>
     <string name="phonePerfil">+1 510 486 1234</string>
     <string name="descripcionPerfil">Acme user since April 2017</string>
+    <string name="tituloConfiguraciones">Configuraciones</string>
+    <string name="btnPerfilConfiguraciones">Perfil</string>
+    <string name="btnNotificacionesConfiguraciones">Notificaciones</string>
+    <string name="btnMetodosDePagoConfiguraciones">Metodos de Pago</string>
 </resources>

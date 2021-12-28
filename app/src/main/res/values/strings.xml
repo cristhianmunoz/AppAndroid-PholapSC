@@ -9,4 +9,13 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="perfilBasico">BASIC PROFILE</string>
+    <string name="perfilInformacion">Here\'s a little bit about me. And so it goes on and on and on.</string>
+    <string name="perfilInformacionPrivadaLabel">PRIVATE INFORMATION</string>
+    <string name="generoPerfil">Male</string>
+    <string name="nombrePerfil">Michael Jordan</string>
+    <string name="locationPerfil">Av. Ladrón de Guevara 253, Quito 170525</string>
+    <string name="emailPerfil">michael@jordan.com</string>
+    <string name="phonePerfil">+1 510 486 1234</string>
+    <string name="descripcionPerfil">Acme user since April 2017</string>
 </resources>

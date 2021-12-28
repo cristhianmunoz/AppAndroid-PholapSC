@@ -1,6 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutPerfil"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+    </android.support.design.widget.AppBarLayout>
+    <ImageView
+        android:id="@+id/imgViewFotoPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/roundedcorners"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txtViewDescripcionPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgViewFotoPerfil"
+        tools:text="@string/descripcionPerfil" />
+
+    <TextView
+        android:id="@+id/txtViewPerfilBasico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/perfilBasico"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/imgViewUserPerfil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewDescripcionPerfil" />
+
+    <ImageView
+        android:id="@+id/imgViewUserPerfil"
+        android:layout_width="23dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/editTxtNombreUsuario"
+        app:layout_constraintEnd_toStartOf="@+id/editTxtNombreUsuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewPerfilBasico"
+        app:srcCompat="@drawable/user_48px" />
+
+    <EditText
+        android:id="@+id/editTxtNombreUsuario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/nombrePerfil"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgViewUserPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewPerfilBasico" />
+
+    <ImageView
+        android:id="@+id/imgViewLocationPerfil"
+        android:layout_width="23dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtLocation"
+        app:layout_constraintEnd_toStartOf="@id/editTxtLocation"
+        app:layout_constraintStart_toStartOf="@+id/imgViewUserPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtNombreUsuario"
+        app:srcCompat="@drawable/location_52px" />
+
+    <EditText
+        android:id="@+id/editTxtLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/locationPerfil"
+        app:layout_constraintEnd_toEndOf="@+id/editTxtNombreUsuario"
+        app:layout_constraintStart_toEndOf="@+id/imgViewLocationPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtNombreUsuario" />
+
+    <ImageView
+        android:id="@+id/imgViewInformationPerfil"
+        android:layout_width="23dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@id/txtViewInformation"
+        app:layout_constraintStart_toStartOf="@+id/imgViewLocationPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtLocation"
+        app:srcCompat="@drawable/info_100px" />
+
+    <TextView
+        android:id="@+id/txtViewInformation"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="5dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/editTxtLocation"
+        app:layout_constraintStart_toEndOf="@+id/imgViewInformationPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtLocation"
+        tools:text="@string/perfilInformacion" />
+
+    <TextView
+        android:id="@+id/txtViewPrivateInformationPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/txtViewPerfilBasico"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewInformation"
+        tools:text="@string/perfilInformacionPrivadaLabel" />
+
+    <ImageView
+        android:id="@+id/imgViewMailPerfil"
+        android:layout_width="23dp"
+        android:layout_height="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtEmailPerfil"
+        app:layout_constraintEnd_toStartOf="@id/editTxtEmailPerfil"
+        app:layout_constraintStart_toStartOf="@+id/imgViewInformationPerfil"
+        app:layout_constraintTop_toTopOf="@+id/editTxtEmailPerfil"
+        app:srcCompat="@drawable/mail_100px" />
+
+    <EditText
+        android:id="@+id/editTxtEmailPerfil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/emailPerfil"
+        app:layout_constraintEnd_toEndOf="@+id/txtViewInformation"
+        app:layout_constraintStart_toEndOf="@+id/imgViewMailPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewPrivateInformationPerfil" />
+
+    <ImageView
+        android:id="@+id/imgViewPhonePerfil"
+        android:layout_width="23dp"
+        android:layout_height="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtPhonePerfil"
+        app:layout_constraintEnd_toStartOf="@+id/editTxtPhonePerfil"
+        app:layout_constraintStart_toStartOf="@+id/imgViewMailPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtEmailPerfil"
+        app:srcCompat="@drawable/touchscreen_60px" />
+
+    <EditText
+        android:id="@+id/editTxtPhonePerfil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/phonePerfil"
+        app:layout_constraintEnd_toEndOf="@+id/editTxtEmailPerfil"
+        app:layout_constraintStart_toEndOf="@+id/imgViewPhonePerfil"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtEmailPerfil" />
+
+    <TextView
+        android:id="@+id/txtViewGeneroPerfil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/editTxtPhonePerfil"
+        app:layout_constraintStart_toEndOf="@id/imgViewGeneroPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtPhonePerfil"
+        tools:text="@string/generoPerfil" />
+
+    <ImageView
+        android:id="@+id/imgViewGeneroPerfil"
+        android:layout_width="23dp"
+        android:layout_height="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtViewGeneroPerfil"
+        app:layout_constraintEnd_toStartOf="@+id/txtViewGeneroPerfil"
+        app:layout_constraintStart_toStartOf="@+id/imgViewPhonePerfil"
+        app:layout_constraintTop_toTopOf="@+id/txtViewGeneroPerfil"
+        app:srcCompat="@drawable/male_and_female_64px" />
+
 
 </android.support.constraint.ConstraintLayout>

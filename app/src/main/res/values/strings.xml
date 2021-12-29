@@ -28,4 +28,7 @@
     <string name="btnIngresar">Ingresar</string>
     <string name="textViewFacebook">Continuar con Facebook</string>
     <string name="textViewGoogle">Continuar con Google</string>
+    <string name="title_activity_main_category">Main_Activity_Category</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

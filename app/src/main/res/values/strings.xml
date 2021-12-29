@@ -22,4 +22,10 @@
     <string name="btnPerfilConfiguraciones">Perfil</string>
     <string name="btnNotificacionesConfiguraciones">Notificaciones</string>
     <string name="btnMetodosDePagoConfiguraciones">Metodos de Pago</string>
+    <string name="editTextCorreoElectronico">Correo Electrónico</string>
+    <string name="editTextPassword">Password</string>
+    <string name="btnNoTieneCuenta">¿No tienes cuenta?</string>
+    <string name="btnIngresar">Ingresar</string>
+    <string name="textViewFacebook">Continuar con Facebook</string>
+    <string name="textViewGoogle">Continuar con Google</string>
 </resources>

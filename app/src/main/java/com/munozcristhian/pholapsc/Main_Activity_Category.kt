@@ -17,10 +17,7 @@ import com.munozcristhian.pholapsc.databinding.ActivityMainCategoryBinding
 
 class Main_Activity_Category : AppCompatActivity() {
 
-    private val rotateOpen: Animation by lazy {AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim)}
-    private val rotateClose: Animation by lazy {AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim)}
-    private val fromBottom: Animation by lazy {AnimationUtils.loadAnimation(this, R.anim.from_bottom_anim)}
-    private val toBottom: Animation by lazy {AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim)}
+
     private lateinit var binding: ActivityMainCategoryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,13 +31,13 @@ class Main_Activity_Category : AppCompatActivity() {
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.tabLayoutPrincipal
         tabs.setupWithViewPager(viewPager)
-        val fab: FloatingActionsMenu = binding.floatingActionsMenu
+        //val fab: FloatingActionsMenu = binding.floatingActionsMenu
 
-        fab.setOnClickListener { view ->
+        //fab.setOnClickListener { view ->
             //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 ///.setAction("Action", null).show()
 
-        }
+        //}
 
     }
 

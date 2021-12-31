@@ -1,5 +1,6 @@
 package com.munozcristhian.pholapsc
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -21,6 +22,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnIngresar.setOnClickListener(){
+            val intent = Intent(this, Main_Activity_Category::class.java).also {
+                startActivity(it)
+            }
+        }
 
     }
 

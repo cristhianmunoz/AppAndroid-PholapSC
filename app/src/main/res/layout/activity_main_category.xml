@@ -1,44 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
     tools:context=".Main_Activity_Category">
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.PholapSC.AppBarOverlay">
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minHeight="?actionBarSize"
-            android:padding="@dimen/appbar_padding"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_width="461dp"
+        android:layout_height="677dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout_principal"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck"
+        tools:layout_editor_absoluteX="1dp">
+    </android.support.v4.view.ViewPager>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-</android.support.design.widget.CoordinatorLayout>
+        android:layout_margin="18dp"
+        app:fab_expandDirection="up"
+        app:fab_labelStyle="@style/FloatStyle"
+        app:fab_labelsPosition="left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="#FFF"
+            app:fab_icon="@drawable/agendarsesion52px"
+            app:fab_size="mini"
+            app:fab_title="@string/text_AgendarSesion"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="#FFF"
+            app:fab_icon="@drawable/imprimirfotos48px"
+            app:fab_size="mini"
+            app:fab_title="@string/text_Imprimir"
+            tools:ignore="MissingConstraints" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="#FFF"
+            app:fab_icon="@drawable/configuraciones48px"
+            app:fab_size="mini"
+            app:fab_title="@string/text_Configuraciones"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="#FFF"
+            app:fab_icon="@drawable/cerrarsesion52px"
+            app:fab_size="mini"
+            app:fab_title="@string/text_Cerrar_Sesion"
+            tools:ignore="MissingConstraints" />
+    <!--
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton_Menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#8F3D3D"
+            android:clickable="true"
+            android:contextClickable="true"
+            android:focusable="true"
+            android:tint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/view_pager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.92"
+            app:layout_constraintStart_toStartOf="@+id/view_pager"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout_principal"
+            app:layout_constraintVertical_bias="0.98"
+            app:rippleColor="#000000"
+            app:srcCompat="@drawable/menu_100px" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton_Agendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#8F3D3D"
+            android:clickable="true"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/floatingActionButton_Menu"
+            app:layout_constraintEnd_toEndOf="@+id/floatingActionButton_Menu"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/view_pager"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout_principal"
+            app:layout_constraintVertical_bias="0.98"
+            app:srcCompat="@drawable/agendarsesion52px" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton_Imprimir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#8F3D3D"
+            android:clickable="true"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/floatingActionButton_Agendar"
+            app:layout_constraintEnd_toEndOf="@+id/floatingActionButton_Agendar"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/view_pager"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout_principal"
+            app:layout_constraintVertical_bias="0.98"
+            app:srcCompat="@drawable/imprimirfotos48px" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton_Configuraciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#8F3D3D"
+            android:clickable="true"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/floatingActionButton_Imprimir"
+            app:layout_constraintEnd_toEndOf="@+id/floatingActionButton_Imprimir"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/view_pager"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout_principal"
+            app:layout_constraintVertical_bias="0.98"
+            app:srcCompat="@drawable/configuraciones48px" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton_Cerrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#8F3D3D"
+            android:clickable="true"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/floatingActionButton_Configuraciones"
+            app:layout_constraintEnd_toEndOf="@+id/floatingActionButton_Configuraciones"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/view_pager"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout_principal"
+            app:layout_constraintVertical_bias="0.98"
+            app:srcCompat="@drawable/cerrarsesion52px" />
+-->
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout_principal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:tabBackground="@color/white"
+        app:tabIndicator="@android:color/holo_green_light"
+        app:tabTextColor="#000000"
+        tools:ignore="MissingConstraints">
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tab_text_fotos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_text_fotos" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tab_text_albunes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_text_albunes" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tab_text_sesiones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_text_sesiones" />
+    </android.support.design.widget.TabLayout>
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:theme="@style/Theme.PholapSC.AppBarOverlay"
+        tools:ignore="MissingConstraints">
+
+    </android.support.design.widget.AppBarLayout>
+
+
+</android.support.constraint.ConstraintLayout>
+

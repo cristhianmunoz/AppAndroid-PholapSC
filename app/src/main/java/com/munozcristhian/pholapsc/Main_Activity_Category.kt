@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import com.getbase.floatingactionbutton.FloatingActionsMenu
 import com.munozcristhian.pholapsc.ui.main.SectionsPagerAdapter
 import com.munozcristhian.pholapsc.databinding.ActivityMainCategoryBinding
 
@@ -31,15 +32,15 @@ class Main_Activity_Category : AppCompatActivity() {
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         val viewPager: ViewPager = binding.viewPager
         viewPager.adapter = sectionsPagerAdapter
-        //val tabs: TabLayout = binding.tabs
-        //tabs.setupWithViewPager(viewPager)
-        //val fab: FloatingActionButton = binding.fab
+        val tabs: TabLayout = binding.tabLayoutPrincipal
+        tabs.setupWithViewPager(viewPager)
+        val fab: FloatingActionsMenu = binding.floatingActionsMenu
 
-        //fab.setOnClickListener { view ->
+        fab.setOnClickListener { view ->
             //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 ///.setAction("Action", null).show()
 
-        //}
+        }
 
     }
 

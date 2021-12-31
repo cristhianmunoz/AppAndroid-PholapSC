@@ -6,10 +6,11 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.munozcristhian.pholapsc.R
 
-//private val TAB_TITLES = arrayOf(
-    //R.string.tab_text_1,
-   // R.string.tab_text_2
-//)
+ val TAB_TITLES = arrayOf(
+    R.string.tab_text_fotos,
+    R.string.tab_text_albunes,
+    R.string.tab_text_sesiones
+)
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

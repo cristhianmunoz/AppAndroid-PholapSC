@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PholapSC">
         <activity
+            android:name=".SeleccionActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
             android:name=".Main_Activity_Category"
             android:exported="false"
             android:label="@string/title_activity_main_category"

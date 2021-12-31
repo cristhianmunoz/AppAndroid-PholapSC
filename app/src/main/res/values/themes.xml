@@ -16,4 +16,10 @@
     <style name="Theme.PholapSC.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.PholapSC.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="FloatStyle">
+        <item name="android:background">@drawable/bg_label</item>
+        <item name="android:textColor">#ffff</item>
+    </style>
+
 </resources>

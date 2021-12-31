@@ -29,6 +29,12 @@
     <string name="textViewFacebook">Continuar con Facebook</string>
     <string name="textViewGoogle">Continuar con Google</string>
     <string name="title_activity_main_category">Main_Activity_Category</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_fotos">Fotos</string>
+    <string name="tab_text_albunes">Albunes</string>
+    <string name="tab_text_sesiones">Sesiones</string>
+    <string name="text_AgendarSesion">Agendar Sesión</string>
+    <string name="text_Imprimir">Imprimir fotos</string>
+    <string name="text_Configuraciones">Configuraciones</string>
+    <string name="text_Cerrar_Sesion">CerrarSesión</string>
+
 </resources>

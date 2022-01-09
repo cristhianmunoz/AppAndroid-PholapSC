@@ -30,8 +30,9 @@
     <string name="textViewFacebook">Continuar con Facebook</string>
     <string name="textViewGoogle">Continuar con Google</string>
     <string name="title_activity_main_category">Main_Activity_Category</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">Fotos</string>
+    <string name="tab_text_2">Álbunes</string>
+    <string name="tab_text_3">Sesiones</string>
     <string name="tituloImpresion">Impresion de Fotos</string>
     <string name="tab_text_fotos">Fotos</string>
     <string name="tab_text_albunes">Albunes</string>
@@ -69,8 +70,8 @@
     <string name="InfoPhoto_description">Usuario x descripcion, descripcion,descripcion,descripcion...</string>
 
 
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_category">CategoryActivity</string>
 
 </resources>

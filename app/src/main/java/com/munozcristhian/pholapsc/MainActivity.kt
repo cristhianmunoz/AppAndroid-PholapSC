@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnIngresar.setOnClickListener(){
-            val intent = Intent(this, ConfiguracionesActivity::class.java).also {
+            val intent = Intent(this, CategoryActivity::class.java).also {
                 startActivity(it)
             }
         }

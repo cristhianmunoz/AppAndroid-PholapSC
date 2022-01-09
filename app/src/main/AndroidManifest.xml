@@ -16,7 +16,7 @@
 
         </activity>
         <activity
-            android:name=".Main_Activity_Category"
+            android:name=".CategoryActivity"
             android:exported="true"
             android:label="@string/title_activity_main_category"
             android:theme="@style/Theme.PholapSC.NoActionBar" />

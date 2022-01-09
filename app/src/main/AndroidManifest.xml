@@ -24,6 +24,10 @@
             android:name=".Perfil_Activity"
             android:exported="false" />
         <activity
+            android:name=".ConfiguracionesActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

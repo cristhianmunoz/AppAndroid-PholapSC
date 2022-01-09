@@ -7,32 +7,75 @@
     android:layout_height="match_parent"
     tools:context=".AlbumFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="210dp"
-        android:layout_height="212dp"
-        android:src="@drawable/img10"
-        tools:layout_editor_absoluteX="-3dp"
-        tools:layout_editor_absoluteY="85dp" />
+        android:layout_width="392dp"
+        android:layout_height="254dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/dsc_1155"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_TitleBoda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/textView_TitleBoda"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="373dp"
-        android:layout_height="202dp"
-        android:src="@drawable/img12"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="290dp" />
+        android:layout_width="192dp"
+        android:layout_height="274dp"
+        android:src="@drawable/dsc_3261"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_TitleBoda"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView_TitleRetrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="120dp"
+        android:text="@string/textView_TitleRetrato"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView_TitleDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.053" />
+
+    <TextView
+        android:id="@+id/textView_TitleDetalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textView_TitleDetalles"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintVertical_bias="0.053" />
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="427dp"
-        android:layout_height="220dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/img18"
+        android:layout_width="192dp"
+        android:layout_height="274dp"
+        android:src="@drawable/dsc_1018"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView_TitleBoda"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

@@ -73,5 +73,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_category">CategoryActivity</string>
-
+    <string name="textView_TitleBoda">Boda</string>
+    <string name="textView_TitleRetrato">Retrato</string>
+    <string name="textView_TitleDetalles">Detalles</string>
 </resources>

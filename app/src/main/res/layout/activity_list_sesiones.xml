@@ -6,77 +6,18 @@
     android:layout_height="match_parent"
     android:padding="7dp">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayoutSI"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolBarSingIn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textViewListSessionFotos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="Fotos"
-                android:textSize="25dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textViewListSessionAlbum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:text="Álbumes"
-                android:textSize="25dp"
-                app:layout_constraintStart_toEndOf="@+id/textViewListSessionFotos"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textViewListSession_Session"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:text="Sesiones"
-                android:textSize="25dp"
-                app:layout_constraintStart_toEndOf="@+id/textViewListSessionAlbum"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.design.widget.AppBarLayout>
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/ListSession_Date"
-        android:textSize="20dp"
-        android:textColor="#000000"
         android:background="@color/SingInButton"
-        app:layout_constraintEnd_toEndOf="@+id/appBarLayoutSI"
-        app:layout_constraintStart_toStartOf="@+id/appBarLayoutSI"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayoutSI"
-        tools:text="@string/ListSession_Date"/>
+        android:text="@string/ListSession_Date"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="27dp"
+        tools:text="@string/ListSession_Date"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView5"

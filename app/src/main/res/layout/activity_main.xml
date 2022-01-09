@@ -127,55 +127,5 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnIngresar" />
-
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/floatingActionsMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="18dp"
-        app:fab_expandDirection="up"
-        app:fab_labelStyle="@style/FloatStyle"
-        app:fab_labelsPosition="left"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton_Imprimir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            app:fab_icon="@drawable/imprimirfotos48px"
-            app:fab_size="mini"
-            app:fab_title="@string/text_Imprimir"
-            tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton_AgendarSesion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_icon="@drawable/agendarsesion52px"
-            app:fab_size="mini"
-            app:fab_title="@string/text_AgendarSesion"
-            tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton_Configuraciones"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_icon="@drawable/configuraciones48px"
-            app:fab_size="mini"
-            app:fab_title="@string/text_Configuraciones"
-            tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton_Cerrar_Sesion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_icon="@drawable/cerrarsesion52px"
-            app:fab_size="mini"
-            app:fab_title="@string/text_Cerrar_Sesion"
-            tools:ignore="MissingConstraints,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
-
+    
 </android.support.constraint.ConstraintLayout>

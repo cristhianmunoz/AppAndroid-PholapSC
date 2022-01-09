@@ -11,7 +11,7 @@ class ListSessionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_sesiones)
-
+        /*
         var btnGoSession = findViewById<TextView>(R.id.textViewListSession_Session)
         btnGoSession.setOnClickListener {
             val intention = Intent(this, SessionActivity::class.java)
@@ -21,7 +21,7 @@ class ListSessionActivity : AppCompatActivity() {
         btnGoImage.setOnClickListener {
             val intention1 = Intent(this, SeleccionActivity::class.java)
             startActivity(intention1)
-        }
+        }*/
 
     }
 }

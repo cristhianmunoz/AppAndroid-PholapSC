@@ -2,6 +2,7 @@ package com.munozcristhian.pholapsc
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -26,20 +27,25 @@ class SeleccionActivity : AppCompatActivity() {
 
 
         binding.imgViewCheck.setOnClickListener {
-            //val intention = Intent(this, HomeFotosActivity::class.java)
+            val intention = Intent(this, CategoryActivity::class.java)
             val dialogBuilder = AlertDialog.Builder(this)
             dialogBuilder.setTitle("Solicitud de Impresión")
             dialogBuilder.setMessage("Sus fotografías serán entregadas en máximo 3 días laborables")
             dialogBuilder.setPositiveButton("Confirmar", DialogInterface.OnClickListener { _, _ ->
-                //startActivity(intention)
+                startActivity(intention)
                 Toast.makeText(this, "Solicitud de impresión realizada con éxito.", Toast.LENGTH_LONG).show()
             })
             dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialog, which ->
-                //startActivity(intention)
+                startActivity(intention)
             //pass
             })
             dialogBuilder.create().show()
 
+        }
+
+        binding.imgViewBackImpresion.setOnClickListener {
+            val intention = Intent(this, CategoryActivity::class.java)
+            startActivity(intention)
         }
 
     }

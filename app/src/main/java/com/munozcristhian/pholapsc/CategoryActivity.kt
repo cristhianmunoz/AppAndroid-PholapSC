@@ -1,5 +1,6 @@
 package com.munozcristhian.pholapsc
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -27,6 +28,29 @@ class CategoryActivity : AppCompatActivity() {
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
+
+        binding.floatingActionButtonConfiguraciones.setOnClickListener(){
+            val intent = Intent(this, ConfiguracionesActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+        binding.floatingActionButtonAgendarSesion.setOnClickListener(){
+            val intent = Intent(this, SessionActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+        binding.floatingActionButtonCerrarSesion.setOnClickListener(){
+            val intent = Intent(this, MainActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+        binding.floatingActionButtonImprimir.setOnClickListener(){
+            val intent = Intent(this, SeleccionActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
+
 
     }
 }

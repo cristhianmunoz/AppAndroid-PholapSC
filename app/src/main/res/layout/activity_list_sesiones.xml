@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="Fotos"
-                android:textSize="30dp"
+                android:textSize="25dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,17 +45,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:text="Álbumes"
-                android:textSize="30dp"
+                android:textSize="25dp"
                 app:layout_constraintStart_toEndOf="@+id/textViewListSessionFotos"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textViewListSession_Session"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:text="Sesiones"
-                android:textSize="30dp"
+                android:textSize="25dp"
                 app:layout_constraintStart_toEndOf="@+id/textViewListSessionAlbum"
                 app:layout_constraintTop_toTopOf="parent" />
 

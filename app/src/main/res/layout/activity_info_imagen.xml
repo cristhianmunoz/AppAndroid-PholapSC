@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imgViewBackBarSession"
+                android:id="@+id/imgViewBackBarInfoImage"
                 android:layout_width="36dp"
                 android:layout_height="33dp"
                 android:layout_marginStart="10dp"
@@ -47,13 +47,13 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/InfoPhoto_title"
                 android:textSize="30dp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView5"
-                app:layout_constraintStart_toEndOf="@+id/imgViewBackBarSession"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewMenu"
+                app:layout_constraintStart_toEndOf="@+id/imgViewBackBarInfoImage"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@string/InfoPhoto_title" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imageViewMenu"
                 android:layout_width="37dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="10dp"

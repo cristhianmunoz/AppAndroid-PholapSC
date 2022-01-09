@@ -40,6 +40,36 @@
     <string name="text_Imprimir">Imprimir fotos</string>
     <string name="text_Configuraciones">Configuraciones</string>
     <string name="text_Cerrar_Sesion">CerrarSesión</string>
+    <!-- Strings Sing In-->
+    <string name="title_Crear_Cuenta">Crear una Cuenta</string>
+    <string name="SingIn_Nombre">Nombre</string>
+    <string name="SingIn_Correo">Correo Electrónico</string>
+    <string name="SingIn_Contrasena">Contraseña</string>
+    <string name="SingIn_R_Contrasena">Confirmar Contraseña</string>
+    <string name="SingIn_btn_Registrar">Registrarse</string>
+    <string name="SingIn_Terminos">Al registrarse, usted está de acuerdo con los Términos
+    de servicio y Políticas de privacidad </string>
+    <string name="SingIn_btnCuenta">Ya tienes una cuenta?</string>
+    <!-- Strings List Sessions-->
+    <string name="ListSession_Date">Thu Apr 13</string>
+    <string name="ListSession_Hour">9:00 AM</string>
+    <string name="ListSession_Places">Starbucks Coffee</string>
+    <string name="ListSession_Dir">Central Starbucks Coffee</string>
+    <!-- Strings Session-->
+    <string name="Session_title">Sesiones de Fotos</string>
+    <string name="Session_Location">Ingrese la ubicación</string>
+    <string name="Session_Date">Ingrese la fecha</string>
+    <string name="Session_Hour">Ingrese la hora</string>
+    <string name="Session_Pack">Seleccione el paquete</string>
+    <string name="Session_btn_Solicitar">Solicitar sesión</string>
+    <string name="Session_Terminos">Al solicitar una sesión, usted está de acuerdo con los Términos
+    de servicio y Políticas de privacidad </string>
+    <!-- Strings Info Foto-->
+    <string name="InfoPhoto_title">Boda_1</string>
+    <string name="InfoPhoto_description">Usuario x descripcion, descripcion,descripcion,descripcion...</string>
+
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

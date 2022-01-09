@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayoutSI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolBarSingIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgViewBackBarSingIn"
+                android:layout_width="36dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/toolBarSingIn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/toolBarSingIn"
+                app:srcCompat="@drawable/back_64px" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <TextView
+        android:id="@+id/textViewTitleSingIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="@string/title_Crear_Cuenta"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/title_Crear_Cuenta" />
+
+    <EditText
+        android:id="@+id/editText_SingInNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:ems="10"
+        android:hint="@string/SingIn_Nombre"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTitleSingIn"
+        app:layout_constraintStart_toStartOf="@+id/textViewTitleSingIn"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitleSingIn"
+        tools:text="@string/SingIn_Nombre" />
+
+    <EditText
+        android:id="@+id/editTextSingInCorrero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="@string/SingIn_Correo"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/editText_SingInNombre"
+        app:layout_constraintStart_toStartOf="@+id/editText_SingInNombre"
+        app:layout_constraintTop_toBottomOf="@+id/editText_SingInNombre"
+        tools:text="@string/SingIn_Correo" />
+
+    <EditText
+        android:id="@+id/editTextSingInPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="@string/SingIn_Contrasena"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/editTextSingInCorrero"
+        app:layout_constraintStart_toStartOf="@+id/editTextSingInCorrero"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSingInCorrero"
+        tools:text="@string/SingIn_Contrasena" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="@string/SingIn_R_Contrasena"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/editTextSingInPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextSingInPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSingInPassword"
+        tools:text="@string/SingIn_R_Contrasena" />
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@color/SingInButton"
+        android:text="@string/SingIn_btn_Registrar"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName4"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4"
+        tools:text="@string/SingIn_btn_Registrar"/>
+
+    <TextView
+        android:id="@+id/textViewTerminos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/SingIn_Terminos"
+        android:textAlignment="center"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegistrar"
+        app:layout_constraintStart_toStartOf="@+id/btnRegistrar"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrar"
+        tools:text="@string/SingIn_Terminos" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/SingIn_btnCuenta"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTerminos"
+        app:layout_constraintStart_toStartOf="@+id/textViewTerminos"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTerminos"
+        tools:text="@string/SingIn_btnCuenta"/>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -64,7 +64,6 @@
         android:hint="@string/SingIn_Nombre"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="@+id/textViewTitleSingIn"
         app:layout_constraintStart_toStartOf="@+id/textViewTitleSingIn"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitleSingIn"

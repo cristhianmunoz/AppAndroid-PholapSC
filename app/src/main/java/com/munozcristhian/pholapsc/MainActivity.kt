@@ -10,6 +10,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.ImageView
 import com.munozcristhian.pholapsc.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +28,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CategoryActivity::class.java).also {
                 startActivity(it)
             }
+        }
+        var btnSingIn = findViewById<Button>(R.id.btnNoTieneCuenta)
+        btnSingIn.setOnClickListener {
+            val intention2 = Intent(this, SingInActivity::class.java)
+            startActivity(intention2)
         }
 
     }

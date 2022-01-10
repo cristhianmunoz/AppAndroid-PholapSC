@@ -11,7 +11,7 @@ class SessionActivity : AppCompatActivity(){
         setContentView(R.layout.activity_session)
         var btnbackSession = findViewById<ImageView>(R.id.imgViewBackBarSession)
         btnbackSession.setOnClickListener {
-            val intention = Intent(this, ListSessionActivity::class.java)
+            val intention = Intent(this, CategoryActivity::class.java)
             startActivity(intention)
         }
 

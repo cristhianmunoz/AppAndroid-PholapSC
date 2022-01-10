@@ -158,9 +158,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
+        android:background="#8B0101"
         android:text="@string/Session_btn_Solicitar"
         android:textColor="@color/white"
-        android:background="@color/SingInButton"
         app:layout_constraintEnd_toEndOf="@+id/editTextPack"
         app:layout_constraintStart_toStartOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/editTextPack" />

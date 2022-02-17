@@ -2,8 +2,9 @@ package com.munozcristhian.pholapsc
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 
 class SessionActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {

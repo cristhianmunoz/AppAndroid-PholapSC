@@ -1,13 +1,10 @@
 package com.munozcristhian.pholapsc.ui.main
 
 import android.content.Context
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import com.munozcristhian.pholapsc.AlbumFragment
-import com.munozcristhian.pholapsc.PhotosFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import com.munozcristhian.pholapsc.R
-import com.munozcristhian.pholapsc.SessionsFragment
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_1,
@@ -22,10 +19,10 @@ private val TAB_TITLES = arrayOf(
 class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     FragmentPagerAdapter(fm) {
 
-    override fun getItem(position: Int): Fragment? {
+    override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position)
+        return PlaceholderFragment.newInstance(position)!!
     }
 
     override fun getPageTitle(position: Int): CharSequence? {

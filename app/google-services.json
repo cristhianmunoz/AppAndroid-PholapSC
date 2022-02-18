@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "662878316470",
+    "project_id": "pholapsc",
+    "storage_bucket": "pholapsc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662878316470:android:b956c773b856db411e0317",
+        "android_client_info": {
+          "package_name": "com.munozcristhian.pholapsc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662878316470-6d7diuplafp2siae3rgtlk4u1l663kr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQBHbj26qamC4jxIvv7M0mvKyBnJOMcgI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662878316470-6d7diuplafp2siae3rgtlk4u1l663kr8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

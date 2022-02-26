@@ -6,162 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".SeleccionActivity">
 
-    <ImageView
-        android:id="@+id/wedding10"
-        android:layout_width="189dp"
-        android:layout_height="129dp"
-        android:layout_marginTop="129dp"
-        app:layout_constraintStart_toEndOf="@+id/wedding9"
-        app:layout_constraintTop_toTopOf="@+id/wedding8"
-        app:srcCompat="@drawable/img10" />
-
-    <ImageView
-        android:id="@+id/wedding9"
-        android:layout_width="189dp"
-        android:layout_height="129dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="129dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/wedding7"
-        app:srcCompat="@drawable/img9" />
-
-    <ImageView
-        android:id="@+id/wedding8"
-        android:layout_width="189dp"
-        android:layout_height="129dp"
-        android:layout_marginTop="129dp"
-        app:layout_constraintStart_toEndOf="@+id/wedding7"
-        app:layout_constraintTop_toTopOf="@+id/wedding6"
-        app:srcCompat="@drawable/img14" />
-
-    <ImageView
-        android:id="@+id/wedding7"
-        android:layout_width="189dp"
-        android:layout_height="129dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="129dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/wedding5"
-        app:srcCompat="@drawable/img7" />
-
-    <ImageView
-        android:id="@+id/wedding6"
-        android:layout_width="189dp"
-        android:layout_height="129dp"
-        android:layout_marginTop="129dp"
-        app:layout_constraintStart_toEndOf="@+id/wedding5"
-        app:layout_constraintTop_toTopOf="@+id/wedding4"
-        app:srcCompat="@drawable/img6" />
-
-    <ImageView
-        android:id="@+id/wedding5"
-        android:layout_width="189dp"
-        android:layout_height="129dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="129dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/wedding3"
-        app:srcCompat="@drawable/img16" />
-
-    <ImageView
-        android:id="@+id/wedding4"
-        android:layout_width="189dp"
-        android:layout_height="129dp"
-        android:layout_marginTop="129dp"
-        app:layout_constraintStart_toEndOf="@+id/wedding3"
-        app:layout_constraintTop_toTopOf="@+id/wedding2"
-        app:srcCompat="@drawable/img15" />
-
-    <ImageView
-        android:id="@+id/wedding3"
-        android:layout_width="189dp"
-        android:layout_height="129dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="129dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/wedding1"
-        app:srcCompat="@drawable/img3" />
-
-    <CheckBox
-        android:id="@+id/checkbox_meat3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/purple_700"
-        android:onClick="onCheckboxClicked"
-        android:text=""
-        app:layout_constraintEnd_toStartOf="@+id/wedding4"
-        app:layout_constraintTop_toTopOf="@+id/wedding3" />
-
-    <CheckBox
-        android:id="@+id/checkbox_meat6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/purple_700"
-        android:onClick="onCheckboxClicked"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/wedding6"
-        app:layout_constraintTop_toTopOf="@+id/wedding6" />
-
-    <CheckBox
-        android:id="@+id/checkbox_meat5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/purple_700"
-        android:onClick="onCheckboxClicked"
-        android:text=""
-        app:layout_constraintEnd_toStartOf="@+id/wedding6"
-        app:layout_constraintTop_toTopOf="@+id/wedding5" />
-
-    <CheckBox
-        android:id="@+id/checkbox_meat7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/purple_700"
-        android:onClick="onCheckboxClicked"
-        android:text=""
-        app:layout_constraintEnd_toStartOf="@+id/wedding8"
-        app:layout_constraintTop_toTopOf="@+id/wedding7" />
-
-    <CheckBox
-        android:id="@+id/checkbox_meat9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/purple_700"
-        android:onClick="onCheckboxClicked"
-        android:text=""
-        app:layout_constraintEnd_toStartOf="@+id/wedding10"
-        app:layout_constraintTop_toTopOf="@+id/wedding9" />
-
-    <CheckBox
-        android:id="@+id/checkbox_meat10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/purple_700"
-        android:onClick="onCheckboxClicked"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/wedding10"
-        app:layout_constraintTop_toTopOf="@+id/wedding10" />
-
-    <CheckBox
-        android:id="@+id/checkbox_meat8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/purple_700"
-        android:onClick="onCheckboxClicked"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/wedding8"
-        app:layout_constraintTop_toTopOf="@+id/wedding8" />
-
-    <CheckBox
-        android:id="@+id/checkbox_meat4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/purple_700"
-        android:onClick="onCheckboxClicked"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/wedding4"
-        app:layout_constraintTop_toTopOf="@+id/wedding4" />
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="412dp"
@@ -192,63 +36,33 @@
         android:id="@+id/imgViewBackImpresion"
         android:layout_width="36dp"
         android:layout_height="33dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toStartOf="@+id/txtViewImpresionFotos"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022"
         app:srcCompat="@drawable/back_64px" />
 
     <ImageView
         android:id="@+id/imgViewCheck"
         android:layout_width="36dp"
         android:layout_height="33dp"
-        android:layout_marginStart="340dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtViewImpresionFotos"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.021"
         app:srcCompat="@drawable/ic_baseline_check_24" />
 
-    <ImageView
-        android:id="@+id/wedding1"
-        android:layout_width="189dp"
-        android:layout_height="129dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:srcCompat="@drawable/img1" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/wedding2"
-        android:layout_width="189dp"
-        android:layout_height="129dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/wedding1"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:srcCompat="@drawable/img2" />
-
-    <CheckBox
-        android:id="@+id/checkbox_meat1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/purple_700"
-        android:onClick="onCheckboxClicked"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/wedding1"
-        app:layout_constraintTop_toTopOf="@+id/wedding1" />
-
-    <CheckBox
-        android:id="@+id/checkbox_meat2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/purple_700"
-        android:onClick="onCheckboxClicked"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/wedding2"
-        app:layout_constraintTop_toTopOf="@+id/wedding2" />
-    tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="73dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

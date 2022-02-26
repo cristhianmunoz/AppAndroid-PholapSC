@@ -21,5 +21,8 @@
         <item name="android:background">@drawable/bg_label</item>
         <item name="android:textColor">#ffff</item>
     </style>
+    <!-- Picasso -->
+    <style name="Theme.PicassoApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.PicassoApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

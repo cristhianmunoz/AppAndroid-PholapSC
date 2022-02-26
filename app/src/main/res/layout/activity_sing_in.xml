@@ -59,57 +59,53 @@
         android:id="@+id/editText_SingInNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/SingIn_Nombre"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/textViewTitleSingIn"
         app:layout_constraintStart_toStartOf="@+id/textViewTitleSingIn"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitleSingIn"
-        tools:text="@string/SingIn_Nombre" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitleSingIn" />
 
     <EditText
-        android:id="@+id/editTextSingInCorrero"
+        android:id="@+id/editTextSingInCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/SingIn_Correo"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/editText_SingInNombre"
-        app:layout_constraintStart_toStartOf="@+id/editText_SingInNombre"
-        app:layout_constraintTop_toBottomOf="@+id/editText_SingInNombre"
-        tools:text="@string/SingIn_Correo" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextDireccion"
+        app:layout_constraintStart_toStartOf="@+id/editTextDireccion"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDireccion" />
 
     <EditText
         android:id="@+id/editTextSingInPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="@string/SingIn_Contrasena"
-        android:inputType="textPersonName"
+        android:hint='@string/SingIn_Contrasena'
+        android:inputType="textPassword"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextSingInCorrero"
-        app:layout_constraintStart_toStartOf="@+id/editTextSingInCorrero"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSingInCorrero"
-        tools:text="@string/SingIn_Contrasena" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextSingInCorreo"
+        app:layout_constraintStart_toStartOf="@+id/editTextSingInCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSingInCorreo" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/editTextPasswordConfirmation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/SingIn_R_Contrasena"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/editTextSingInPassword"
         app:layout_constraintStart_toStartOf="@+id/editTextSingInPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSingInPassword"
-        tools:text="@string/SingIn_R_Contrasena" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSingInPassword" />
 
     <Button
         android:id="@+id/btnRegistrar"
@@ -119,9 +115,9 @@
         android:background="@color/SingInButton"
         android:text="@string/SingIn_btn_Registrar"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName4"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPasswordConfirmation"
+        app:layout_constraintStart_toStartOf="@+id/editTextPasswordConfirmation"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordConfirmation"
         tools:text="@string/SingIn_btn_Registrar"/>
 
     <TextView
@@ -147,6 +143,40 @@
         app:layout_constraintStart_toStartOf="@+id/textViewTerminos"
         app:layout_constraintTop_toBottomOf="@+id/textViewTerminos"
         tools:text="@string/SingIn_btnCuenta"/>
+
+    <Spinner
+        android:id="@+id/spinnerGeneros"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/editText_SingInNombre"
+        app:layout_constraintStart_toStartOf="@+id/editText_SingInNombre"
+        app:layout_constraintTop_toBottomOf="@+id/editText_SingInNombre" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/SignIn_Telefono"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerGeneros"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/spinnerGeneros"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerGeneros" />
+
+    <EditText
+        android:id="@+id/editTextDireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/SignIn_Direccion"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPhone"
+        app:layout_constraintStart_toStartOf="@+id/editTextPhone"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

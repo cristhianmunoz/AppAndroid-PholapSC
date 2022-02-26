@@ -41,6 +41,7 @@
     <string name="text_Imprimir">Imprimir fotos</string>
     <string name="text_Configuraciones">Configuraciones</string>
     <string name="text_Cerrar_Sesion">CerrarSesión</string>
+
     <!-- Strings Sing In-->
     <string name="title_Crear_Cuenta">Crear una Cuenta</string>
     <string name="SingIn_Nombre">Nombre</string>
@@ -48,9 +49,17 @@
     <string name="SingIn_Contrasena">Contraseña</string>
     <string name="SingIn_R_Contrasena">Confirmar Contraseña</string>
     <string name="SingIn_btn_Registrar">Registrarse</string>
-    <string name="SingIn_Terminos">Al registrarse, usted está de acuerdo con los Términos
-    de servicio y Políticas de privacidad </string>
+    <string name="SingIn_Terminos">Al registrarse, usted está de acuerdo con los Términos de servicio y Políticas de privacidad </string>
     <string name="SingIn_btnCuenta">Ya tienes una cuenta?</string>
+    <string name="password_no_match">Las contraseñas no coinciden</string>
+    <string name="SignIn_Telefono">Teléfono</string>
+    <string name="SignIn_Direccion">Direccion</string>
+    <string-array name="generos">
+        <item>Hombre</item>
+        <item>Mujer</item>
+        <item>Otro</item>
+    </string-array>
+
     <!-- Strings List Sessions-->
     <string name="ListSession_Date">Thu Apr 13</string>
     <string name="ListSession_Hour">9:00 AM</string>
@@ -76,4 +85,9 @@
     <string name="textView_TitleBoda">Boda</string>
     <string name="textView_TitleRetrato">Retrato</string>
     <string name="textView_TitleDetalles">Detalles</string>
+
+    <!-- Strings Log in (Main Activity) -->
+    <string name="email_no_valid">Email no válido!</string>
+    <string name="password_no_valid">La contraseña debe contener al menos 8 caracteres alfanuméricos</string>
+
 </resources>

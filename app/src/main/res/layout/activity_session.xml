@@ -154,7 +154,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
 
     <Button
-        android:id="@+id/btn_Solicitar"
+        android:id="@+id/btnSolicitar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
@@ -173,9 +173,9 @@
         android:text="@string/Session_Terminos"
         android:textSize="8dp"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/btn_Solicitar"
-        app:layout_constraintStart_toStartOf="@+id/btn_Solicitar"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Solicitar" />
+        app:layout_constraintEnd_toEndOf="@+id/btnSolicitar"
+        app:layout_constraintStart_toStartOf="@+id/btnSolicitar"
+        app:layout_constraintTop_toBottomOf="@+id/btnSolicitar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

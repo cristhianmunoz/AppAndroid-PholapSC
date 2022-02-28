@@ -41,22 +41,25 @@ class CategoryActivity : AppCompatActivity() {
         binding.floatingActionButtonConfiguraciones.setOnClickListener(){
             val intent = Intent(this, ConfiguracionesActivity::class.java)
             intent.putExtra(CURRENT_USER, usuario)
+            intent.putExtra(UID_USER, uid)
             startActivity(intent)
 
         }
         binding.floatingActionButtonAgendarSesion.setOnClickListener(){
-            val intent = Intent(this, SessionActivity::class.java).also {
-                startActivity(it)
-            }
+            val intent = Intent(this, SessionActivity::class.java)
+            intent.putExtra(UID_USER, uid)
+            intent.putExtra(CURRENT_USER, usuario)
+            startActivity(intent)
         }
         binding.floatingActionButtonCerrarSesion.setOnClickListener(){
-            val intent = Intent(this, MainActivity::class.java).also {
+            Intent(this, MainActivity::class.java).also {
                 startActivity(it)
             }
         }
         binding.floatingActionButtonImprimir.setOnClickListener(){
             val intent = Intent(this, SeleccionActivity::class.java)
             intent.putExtra(UID_USER, uid)
+            intent.putExtra(CURRENT_USER, usuario)
             startActivity(intent)
         }
 

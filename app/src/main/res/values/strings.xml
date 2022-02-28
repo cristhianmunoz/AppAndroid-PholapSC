@@ -68,6 +68,9 @@
     <string name="telefono_requerido">El teléfono es requerido</string>
     <string name="direccion_requerido">La dirección es requerida</string>
     <string name="password_no_match">Las contraseñas no coinciden</string>
+    <string name="direccionSesion_requerido">La dirección de la sesión es requerida</string>
+    <string name="fechaSesion_requerido">La fecha de la sesión es requerida</string>
+    <string name="horaSesion_requerido">La hora de la sesión es requerida</string>
 
 
     <!-- Strings List Sessions-->
@@ -82,8 +85,14 @@
     <string name="Session_Hour">Ingrese la hora</string>
     <string name="Session_Pack">Seleccione el paquete</string>
     <string name="Session_btn_Solicitar">Solicitar sesión</string>
-    <string name="Session_Terminos">Al solicitar una sesión, usted está de acuerdo con los Términos
-    de servicio y Políticas de privacidad </string>
+    <string name="Session_Terminos">Al solicitar una sesión, usted está de acuerdo con los Términos de servicio y Políticas de privacidad </string>
+    <string-array name="paquetes">
+        <item>Boda</item>
+        <item>Privado</item>
+        <item>Formal</item>
+        <item>Parejas</item>
+    </string-array>
+
     <!-- Strings Info Foto-->
     <string name="InfoPhoto_title">Boda_1</string>
     <string name="InfoPhoto_description">Usuario x descripcion, descripcion,descripcion,descripcion...</string>

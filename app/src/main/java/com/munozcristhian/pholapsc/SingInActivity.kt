@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.util.Patterns
-import android.widget.*
-
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -16,7 +16,6 @@ import com.google.firebase.ktx.Firebase
 import com.munozcristhian.pholapsc.databinding.ActivitySingInBinding
 import com.munozcristhian.pholapsc.model.Usuario
 import com.munozcristhian.pholapsc.ui.main.SpinnerAdapter
-import java.util.*
 
 class SingInActivity : AppCompatActivity() {
 
@@ -34,8 +33,7 @@ class SingInActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         // Initialize Realtime Database
-        realtimeDatabase = FirebaseDatabase.getInstance().getReference("Usuarios")
-        //realtimeDatabase = FirebaseDatabase.getInstance().reference.child("Usuarios")
+        realtimeDatabase = FirebaseDatabase.getInstance().reference.child("Usuarios")
 
         // Generos
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -66,27 +64,30 @@ class SingInActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             // Validar igualdad de contraseñas
-            if(!binding.editTextSingInPassword.text.toString().equals(binding.editTextPasswordConfirmation.text.toString())){
+            if(binding.editTextSingInPassword.text.toString() != binding.editTextPasswordConfirmation.text.toString()){
                 binding.editTextSingInPassword.error = resources.getString(R.string.password_no_match)
                 return@setOnClickListener
             }
             // Validar nombre
-            if(!binding.editTextSingInNombre.text.isNotEmpty()){
+            if(binding.editTextSingInNombre.text.isEmpty()){
                 binding.editTextSingInNombre.error = resources.getString(R.string.nombre_requerido)
             }
             // Validar apellido
-            if(!binding.editTextSingInApellido.text.isNotEmpty()){
+            if(binding.editTextSingInApellido.text.isEmpty()){
                 binding.editTextSingInApellido.error = resources.getString(R.string.apellido_requerido)
+                return@setOnClickListener
             }
             //Validar telefono
             if(binding.editTextPhone.text.length != 10){
                 binding.editTextPhone.error = resources.getString(R.string.telefono_requerido)
+                return@setOnClickListener
             }
             // Validar genero
 
             // Validar direccion
-            if(!binding.editTextDireccion.text.isNotEmpty()){
+            if(binding.editTextDireccion.text.isEmpty()){
                 binding.editTextDireccion.error = resources.getString(R.string.direccion_requerido)
+                return@setOnClickListener
             }
 
             // Datos
@@ -131,13 +132,12 @@ class SingInActivity : AppCompatActivity() {
         return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
     }
 
-    fun signUpNewUser(email:String, password:String){
+    private fun signUpNewUser(email:String, password:String){
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(EXTRA_LOGIN, "createUserWithEmail:success")
-                    val user = auth.currentUser
                     Toast.makeText(baseContext, "Nuevo Usuario Guardado", Toast.LENGTH_SHORT).show()
                     //updateUI(user)
                     val intention1 = Intent(this,MainActivity::class.java)

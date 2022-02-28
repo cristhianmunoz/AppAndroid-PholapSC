@@ -35,7 +35,7 @@ class SeleccionActivity : AppCompatActivity() {
 
     // Usuario
     private lateinit var uid: String
-
+    private lateinit var usuario: Usuario
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,8 +46,8 @@ class SeleccionActivity : AppCompatActivity() {
         //Extras
         val extras = intent.extras
         if (extras != null) {
+            usuario = extras.get(CURRENT_USER) as Usuario
             uid = extras.getString(UID_USER) as String
-            Log.d("SELECCION_LOG", "EL UID actual es $uid")
         }else{
             Log.d("SELECCION_LOG", "No hay extras para Seleccion")
         }
@@ -75,27 +75,31 @@ class SeleccionActivity : AppCompatActivity() {
                 }else{
                     check.isChecked = false
                 }
-                Toast.makeText(this@SeleccionActivity, "Has seleccionado la imagen $position.", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this@SeleccionActivity, "Has seleccionado la imagen $position.", Toast.LENGTH_SHORT).show()
             }
 
         })
 
 
         binding.imgViewBackImpresion.setOnClickListener{
-            //val intention = Intent(this, HomeFotosActivity::class.java)
-            //startActivity(intention)
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra(CURRENT_USER, usuario)
+            intent.putExtra(UID_USER, uid)
+            startActivity(intent)
         }
 
 
         binding.imgViewCheck.setOnClickListener {
-            val intention = Intent(this, CategoryActivity::class.java)
+            val intent = Intent(this, CategoryActivity::class.java)
             val dialogBuilder = AlertDialog.Builder(this)
             dialogBuilder.setTitle("Solicitud de Impresión")
             val mensaje = "Has seleccionado " + fotosSeleccionadas.size + " fotos. \nSus fotografías serán entregadas en máximo 3 días laborables"
             dialogBuilder.setMessage(mensaje)
             dialogBuilder.setPositiveButton("Confirmar") { _, _ ->
-                intention.putExtra("fotos", fotosSeleccionadas.toIntArray())
-                startActivity(intention)
+                //intention.putExtra("fotos", fotosSeleccionadas.toIntArray())
+                intent.putExtra(CURRENT_USER, usuario)
+                intent.putExtra(UID_USER, uid)
+                startActivity(intent)
                 Toast.makeText(
                     this,
                     "Solicitud de impresión realizada con éxito.",

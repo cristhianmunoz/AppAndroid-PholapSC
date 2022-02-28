@@ -108,5 +108,6 @@
     <!-- Strings Log in (Main Activity) -->
     <string name="email_no_valid">Email no válido!</string>
     <string name="password_no_valid">La contraseña debe contener al menos 8 caracteres alfanuméricos</string>
+    <string name="recordarme">Recordarme</string>
 
 </resources>

@@ -27,14 +27,13 @@
         android:id="@+id/imageButton"
         android:layout_width="308dp"
         android:layout_height="36dp"
+        android:layout_marginTop="30dp"
         android:background="#ECC65148"
         android:scaleType="fitStart"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnNoTieneCuenta"
-        app:layout_constraintVertical_bias="0.53"
         app:srcCompat="@drawable/facebook_f_64px"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -103,18 +102,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCorreoElectronico" />
 
+    <CheckBox
+        android:id="@+id/checkBoxRecordarme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/recordarme"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
     <Button
         android:id="@+id/btnIngresar"
         android:layout_width="306dp"
         android:layout_height="48dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:background="#8B0101"
         android:text="@string/btnIngresar"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxRecordarme" />
 
     <Button
         android:id="@+id/btnNoTieneCuenta"

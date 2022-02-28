@@ -45,13 +45,14 @@
     <!-- Strings Sing In-->
     <string name="title_Crear_Cuenta">Crear una Cuenta</string>
     <string name="SingIn_Nombre">Nombre</string>
+    <string name="SingIn_Apellido">Apellido</string>
+    <string name="SingIn_NombreUsuario">Nombre de Usuario</string>
     <string name="SingIn_Correo">Correo Electrónico</string>
     <string name="SingIn_Contrasena">Contraseña</string>
     <string name="SingIn_R_Contrasena">Confirmar Contraseña</string>
     <string name="SingIn_btn_Registrar">Registrarse</string>
     <string name="SingIn_Terminos">Al registrarse, usted está de acuerdo con los Términos de servicio y Políticas de privacidad </string>
     <string name="SingIn_btnCuenta">Ya tienes una cuenta?</string>
-    <string name="password_no_match">Las contraseñas no coinciden</string>
     <string name="SignIn_Telefono">Teléfono</string>
     <string name="SignIn_Direccion">Direccion</string>
     <string-array name="generos">
@@ -59,6 +60,15 @@
         <item>Mujer</item>
         <item>Otro</item>
     </string-array>
+
+    <!-- Errores-->
+    <string name="nombre_requerido">El nombre es requerido</string>
+    <string name="apellido_requerido">El apellido es requerido</string>
+    <string name="nombreUsuario_requerido">El nombre de usuario es requerido</string>
+    <string name="telefono_requerido">El teléfono es requerido</string>
+    <string name="direccion_requerido">La dirección es requerida</string>
+    <string name="password_no_match">Las contraseñas no coinciden</string>
+
 
     <!-- Strings List Sessions-->
     <string name="ListSession_Date">Thu Apr 13</string>

@@ -16,6 +16,7 @@ import com.google.firebase.ktx.Firebase
 import com.munozcristhian.pholapsc.databinding.ActivitySingInBinding
 import com.munozcristhian.pholapsc.model.Usuario
 import com.munozcristhian.pholapsc.ui.main.SpinnerAdapter
+import java.util.*
 
 class SingInActivity : AppCompatActivity() {
 
@@ -33,7 +34,8 @@ class SingInActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         // Initialize Realtime Database
-        //realtimeDatabase = FirebaseDatabase.getInstance().getReference("Usuarios")
+        realtimeDatabase = FirebaseDatabase.getInstance().getReference("Usuarios")
+        //realtimeDatabase = FirebaseDatabase.getInstance().reference.child("Usuarios")
 
         // Generos
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -69,43 +71,46 @@ class SingInActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             // Validar nombre
-            if(binding.editTextSingInNombre.text.isNotEmpty()){
-                binding.editTextSingInNombre.error = ""
+            if(!binding.editTextSingInNombre.text.isNotEmpty()){
+                binding.editTextSingInNombre.error = resources.getString(R.string.nombre_requerido)
+            }
+            // Validar apellido
+            if(!binding.editTextSingInApellido.text.isNotEmpty()){
+                binding.editTextSingInApellido.error = resources.getString(R.string.apellido_requerido)
             }
             //Validar telefono
             if(binding.editTextPhone.text.length != 10){
-                binding.editTextPhone.error = ""
+                binding.editTextPhone.error = resources.getString(R.string.telefono_requerido)
             }
             // Validar genero
 
             // Validar direccion
-            if(binding.editTextDireccion.text.isNotEmpty()){
-                binding.editTextDireccion.error = ""
+            if(!binding.editTextDireccion.text.isNotEmpty()){
+                binding.editTextDireccion.error = resources.getString(R.string.direccion_requerido)
             }
 
             // Datos
             val nombre = binding.editTextSingInNombre.text.toString()
-            val genero = "Hombre"
+            val apellido = binding.editTextSingInApellido.text.toString()
+            val genero = binding.spinnerGeneros.selectedItem.toString()
             val telefono = binding.editTextPhone.text.toString()
             val direction = binding.editTextDireccion.text.toString()
             val correo = binding.editTextSingInCorreo.text.toString()
             val password = binding.editTextSingInPassword.text.toString()
 
+            val usuario = Usuario(nombre, apellido, genero, telefono, direction, correo)
+
             // Creamos nuevo usuario
             // Authentication
             signUpNewUser(correo, password)
+            val UID_USER = auth.uid.toString()
 
             // Realtime Database
-            val usuario = Usuario(nombre, genero, telefono, direction, correo)
-            /*
-            realtimeDatabase.child(nombre).setValue(usuario).addOnSuccessListener {
+            realtimeDatabase.child(UID_USER).setValue(usuario).addOnSuccessListener {
                 Toast.makeText(baseContext, "Los datos del usuario se han guardado con exito", Toast.LENGTH_SHORT).show()
             }.addOnFailureListener {
                 Toast.makeText(baseContext, "No se pudo guardar los datos del usuario", Toast.LENGTH_SHORT).show()
             }
-
-             */
-
         }
 
         // Go Login

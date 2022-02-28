@@ -8,7 +8,6 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -46,7 +45,10 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            AutenticarUsuario(binding.editTextCorreoElectronico.text.toString(), binding.editTextPassword.text.toString())
+            val correo = binding.editTextCorreoElectronico.text.toString()
+            val password = binding.editTextPassword.text.toString()
+
+            autenticarUsuario(correo, password)
         }
 
         // Sig In
@@ -61,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
     }
 
-    fun AutenticarUsuario(email:String, password:String){
+    fun autenticarUsuario(email:String, password:String){
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -71,8 +73,8 @@ class MainActivity : AppCompatActivity() {
                     val intencion = Intent(this, CategoryActivity::class.java)
 
                     //Get Usuario
-                    val UID_USER = auth.uid.toString()
-                    realtimeDatabase.child(UID_USER).get().addOnSuccessListener {
+                    val uid = auth.uid.toString()
+                    realtimeDatabase.child(uid).get().addOnSuccessListener {
                         Log.i("FIREBASE_REALTIME_DATABASE", "Got value ${it}")
                         val usuario = Usuario(
                             it.child("nombre").value.toString(),
@@ -83,12 +85,11 @@ class MainActivity : AppCompatActivity() {
                             it.child("correo").value.toString()
                         )
                         intencion.putExtra(CURRENT_USER, usuario)
+                        intencion.putExtra(UID_USER, uid)
                         startActivity(intencion)
                     }.addOnFailureListener{
                         Log.e("firebase", "Error getting data", it)
                     }
-
-
                 } else {
                     Log.w(EXTRA_LOGIN, "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Usuario y/o contraseña incorrectos", Toast.LENGTH_SHORT).show()

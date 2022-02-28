@@ -15,6 +15,7 @@ class CategoryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCategoryBinding
     private lateinit var usuario: Usuario
+    private lateinit var uid: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,7 @@ class CategoryActivity : AppCompatActivity() {
         val extras = intent.extras
         if (extras != null) {
             usuario = extras.get(CURRENT_USER) as Usuario
+            uid = extras.getString(UID_USER) as String
         }else{
             Log.d("CATEGORY_LOG", "No hay extras para Category")
         }
@@ -53,9 +55,9 @@ class CategoryActivity : AppCompatActivity() {
             }
         }
         binding.floatingActionButtonImprimir.setOnClickListener(){
-            val intent = Intent(this, SeleccionActivity::class.java).also {
-                startActivity(it)
-            }
+            val intent = Intent(this, SeleccionActivity::class.java)
+            intent.putExtra(UID_USER, uid)
+            startActivity(intent)
         }
 
 

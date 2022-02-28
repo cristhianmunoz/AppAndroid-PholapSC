@@ -1,42 +1,40 @@
 package com.munozcristhian.pholapsc
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-
-import android.view.View
+import android.util.Log
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
-import androidx.core.view.marginEnd
-import androidx.core.view.size
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mayorgaerick.picassoapp.DeviceImagesAdapter
-import com.mayorgaerick.picassoapp.ResourceImagesAdapter
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import com.munozcristhian.pholapsc.databinding.SeleccionImpresionBinding
 import com.munozcristhian.pholapsc.images.OnlineImagesAdapter
+import com.munozcristhian.pholapsc.model.Usuario
 
 class SeleccionActivity : AppCompatActivity() {
+
     private lateinit var binding: SeleccionImpresionBinding
-    private lateinit var checkBoxes: MutableList<View>
+    // Storage
+    private lateinit var storage: FirebaseStorage
+    private lateinit var imagesRef: StorageReference
 
     // Images
     private lateinit var animals: Array<String>
     private lateinit var parties: IntArray
-    private lateinit var images: MutableList<String>
     private lateinit var onlineImagesAdapter: OnlineImagesAdapter
-    private lateinit var resourceImagesAdapter: ResourceImagesAdapter
-    private lateinit var deviceImagesAdapter: DeviceImagesAdapter
-    private var PERMISSION_READ_EXTERNAL_MEMORY = 1
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var fotosSeleccionadas: MutableList<Int> = mutableListOf()
-    private lateinit var checkBoxSelected: CheckBox
-    private lateinit var imageViewSelected: ImageView
+    private val absolutePath: String = "gs://pholapsc.appspot.com/"
+
+    // Usuario
+    private lateinit var uid: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,8 +43,21 @@ class SeleccionActivity : AppCompatActivity() {
         binding = SeleccionImpresionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        animals = getAnimalsLinks()!!
-        parties = getPartyPics()!!
+        //Extras
+        val extras = intent.extras
+        if (extras != null) {
+            uid = extras.getString(UID_USER) as String
+            Log.d("SELECCION_LOG", "EL UID actual es $uid")
+        }else{
+            Log.d("SELECCION_LOG", "No hay extras para Seleccion")
+        }
+
+        // Firebase Storage
+        storage = Firebase.storage
+        imagesRef = storage.reference.child("images/$uid")
+
+        animals = getAnimalsLinks()
+        parties = getPartyPics()
 
         onlineImagesAdapter = OnlineImagesAdapter(this, animals, R.layout.image_layout)
         //resourceImagesAdapter = ResourceImagesAdapter(this, parties, R.layout.image_layout)
@@ -77,22 +88,24 @@ class SeleccionActivity : AppCompatActivity() {
 
 
         binding.imgViewCheck.setOnClickListener {
-            //checkSelectedImages()
-
             val intention = Intent(this, CategoryActivity::class.java)
             val dialogBuilder = AlertDialog.Builder(this)
             dialogBuilder.setTitle("Solicitud de Impresión")
             val mensaje = "Has seleccionado " + fotosSeleccionadas.size + " fotos. \nSus fotografías serán entregadas en máximo 3 días laborables"
             dialogBuilder.setMessage(mensaje)
-            dialogBuilder.setPositiveButton("Confirmar", DialogInterface.OnClickListener { _, _ ->
+            dialogBuilder.setPositiveButton("Confirmar") { _, _ ->
                 intention.putExtra("fotos", fotosSeleccionadas.toIntArray())
                 startActivity(intention)
-                Toast.makeText(this, "Solicitud de impresión realizada con éxito.", Toast.LENGTH_LONG).show()
-            })
-            dialogBuilder.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialog, which ->
+                Toast.makeText(
+                    this,
+                    "Solicitud de impresión realizada con éxito.",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            dialogBuilder.setNegativeButton("Cancelar") { _, _ ->
                 //startActivity(intention)
-            //pass
-            })
+                //pass
+            }
             dialogBuilder.create().show()
 
         }
@@ -105,13 +118,14 @@ class SeleccionActivity : AppCompatActivity() {
     }
 
     private fun addFoto(view: Int){
-        if(!fotosSeleccionadas.any() {it == view}){
+        if(!fotosSeleccionadas.any {it == view}){
             fotosSeleccionadas.add(view)
         }
     }
 
-    private fun getAnimalsLinks(): Array<String>? {
+    private fun getAnimalsLinks(): Array<String> {
         return arrayOf(
+            "https://firebasestorage.googleapis.com/v0/b/pholapsc.appspot.com/o/images%2FLIleoK1JDRPkTcXUpWYT3lIqovB2%2Falbum1%2Fimg1.jpeg?alt=media&token=cf2a9d7d-4da2-4c66-9035-83784b103eff",
             "https://static.pexels.com/photos/86462/red-kite-bird-of-prey-milan-raptor-86462.jpeg",
             "https://static.pexels.com/photos/67508/pexels-photo-67508.jpeg",
             "https://static.pexels.com/photos/55814/leo-animal-savannah-lioness-55814.jpeg",
@@ -139,7 +153,7 @@ class SeleccionActivity : AppCompatActivity() {
 
 
 
-    private fun getPartyPics(): IntArray? {
+    private fun getPartyPics(): IntArray {
         return intArrayOf(
             R.drawable.img1,
             R.drawable.img2,
@@ -162,10 +176,6 @@ class SeleccionActivity : AppCompatActivity() {
             R.drawable.img19,
             R.drawable.img20,
         )
-    }
-
-    private fun contSelectedImages(): Int {
-        return 0
     }
 
 

@@ -48,26 +48,6 @@ class SingInActivity : AppCompatActivity() {
 
         // Registrar
         binding.btnRegistrar.setOnClickListener {
-            // Validar correo
-            if(!isValidEmail(binding.editTextSingInCorreo.text)){
-                binding.editTextSingInCorreo.error = resources.getString(R.string.email_no_valid)
-                return@setOnClickListener
-            }
-            //Validar contraseña
-            if(binding.editTextSingInPassword.text.length < PASSWORD_LENGHT){
-                binding.editTextSingInPassword.error = resources.getString(R.string.password_no_valid)
-                return@setOnClickListener
-            }
-            //Validar confirmación de contraseña
-            if(binding.editTextPasswordConfirmation.text.length < 8){
-                binding.editTextPasswordConfirmation.error = resources.getString(R.string.password_no_valid)
-                return@setOnClickListener
-            }
-            // Validar igualdad de contraseñas
-            if(binding.editTextSingInPassword.text.toString() != binding.editTextPasswordConfirmation.text.toString()){
-                binding.editTextSingInPassword.error = resources.getString(R.string.password_no_match)
-                return@setOnClickListener
-            }
             // Validar nombre
             if(binding.editTextSingInNombre.text.isEmpty()){
                 binding.editTextSingInNombre.error = resources.getString(R.string.nombre_requerido)
@@ -87,6 +67,26 @@ class SingInActivity : AppCompatActivity() {
             // Validar direccion
             if(binding.editTextDireccion.text.isEmpty()){
                 binding.editTextDireccion.error = resources.getString(R.string.direccion_requerido)
+                return@setOnClickListener
+            }
+            // Validar correo
+            if(!isValidEmail(binding.editTextSingInCorreo.text)){
+                binding.editTextSingInCorreo.error = resources.getString(R.string.email_no_valid)
+                return@setOnClickListener
+            }
+            //Validar contraseña
+            if(binding.editTextSingInPassword.text.length < PASSWORD_LENGHT){
+                binding.editTextSingInPassword.error = resources.getString(R.string.password_no_valid)
+                return@setOnClickListener
+            }
+            //Validar confirmación de contraseña
+            if(binding.editTextPasswordConfirmation.text.length < 8){
+                binding.editTextPasswordConfirmation.error = resources.getString(R.string.password_no_valid)
+                return@setOnClickListener
+            }
+            // Validar igualdad de contraseñas
+            if(binding.editTextSingInPassword.text.toString() != binding.editTextPasswordConfirmation.text.toString()){
+                binding.editTextSingInPassword.error = resources.getString(R.string.password_no_match)
                 return@setOnClickListener
             }
 
@@ -138,15 +138,14 @@ class SingInActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(EXTRA_LOGIN, "createUserWithEmail:success")
-                    Toast.makeText(baseContext, "Nuevo Usuario Guardado", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(baseContext, "Nuevo Usuario Guardado", Toast.LENGTH_SHORT).show()
                     //updateUI(user)
                     val intention1 = Intent(this,MainActivity::class.java)
                     startActivity(intention1)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(EXTRA_LOGIN, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                     //updateUI(null)
                 }
             }

@@ -124,8 +124,10 @@ class MainActivity : AppCompatActivity() {
                             it.child("direccion").value.toString(),
                             it.child("correo").value.toString()
                         )
-                        intencion.putExtra(CURRENT_USER, usuario)
-                        intencion.putExtra(UID_USER, uid)
+                        CURRENT_USUARIO = usuario
+                        CURRENT_UID = uid
+                        //intencion.putExtra(CURRENT_USER, usuario)
+                        //intencion.putExtra(UID_USER, uid)
                         startActivity(intencion)
                     }.addOnFailureListener{
                         Log.e("firebase", "Error getting data", it)

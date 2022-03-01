@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             val password = binding.editTextPassword.text.toString()
 
             autenticarUsuario(correo, password)
+
         }
 
         // Sig In
@@ -66,6 +67,13 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onPause() {
+        super.onPause()
+        finish()
+    }
+
+
 
     private fun isValidEmail(target: CharSequence): Boolean{
         return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
@@ -116,8 +124,10 @@ class MainActivity : AppCompatActivity() {
                             it.child("direccion").value.toString(),
                             it.child("correo").value.toString()
                         )
-                        intencion.putExtra(CURRENT_USER, usuario)
-                        intencion.putExtra(UID_USER, uid)
+                        CURRENT_USUARIO = usuario
+                        CURRENT_UID = uid
+                        //intencion.putExtra(CURRENT_USER, usuario)
+                        //intencion.putExtra(UID_USER, uid)
                         startActivity(intencion)
                     }.addOnFailureListener{
                         Log.e("firebase", "Error getting data", it)
@@ -128,6 +138,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
     }
+
+
 
 
 

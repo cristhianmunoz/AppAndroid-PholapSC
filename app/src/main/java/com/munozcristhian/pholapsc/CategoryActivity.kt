@@ -23,6 +23,7 @@ class CategoryActivity : AppCompatActivity() {
         binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        /*
         val extras = intent.extras
         if (extras != null) {
             usuario = extras.get(CURRENT_USER) as Usuario
@@ -30,6 +31,10 @@ class CategoryActivity : AppCompatActivity() {
         }else{
             Log.d("CATEGORY_LOG", "No hay extras para Category")
         }
+
+         */
+
+
 
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
@@ -40,15 +45,15 @@ class CategoryActivity : AppCompatActivity() {
 
         binding.floatingActionButtonConfiguraciones.setOnClickListener(){
             val intent = Intent(this, ConfiguracionesActivity::class.java)
-            intent.putExtra(CURRENT_USER, usuario)
-            intent.putExtra(UID_USER, uid)
+            intent.putExtra(CURRENT_USER, CURRENT_USUARIO)
+            intent.putExtra(UID_USER, CURRENT_UID)
             startActivity(intent)
 
         }
         binding.floatingActionButtonAgendarSesion.setOnClickListener(){
             val intent = Intent(this, SessionActivity::class.java)
-            intent.putExtra(UID_USER, uid)
-            intent.putExtra(CURRENT_USER, usuario)
+            intent.putExtra(CURRENT_USER, CURRENT_USUARIO)
+            intent.putExtra(UID_USER, CURRENT_UID)
             startActivity(intent)
         }
         binding.floatingActionButtonCerrarSesion.setOnClickListener(){
@@ -58,8 +63,8 @@ class CategoryActivity : AppCompatActivity() {
         }
         binding.floatingActionButtonImprimir.setOnClickListener(){
             val intent = Intent(this, SeleccionActivity::class.java)
-            intent.putExtra(UID_USER, uid)
-            intent.putExtra(CURRENT_USER, usuario)
+            intent.putExtra(CURRENT_USER, CURRENT_USUARIO)
+            intent.putExtra(UID_USER, CURRENT_UID)
             startActivity(intent)
         }
 

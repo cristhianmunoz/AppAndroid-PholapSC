@@ -41,7 +41,7 @@
                 app:srcCompat="@drawable/back_64px" />
 
             <TextView
-                android:id="@+id/textViewListSessionFotos"
+                android:id="@+id/textViewNombreFoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -78,7 +78,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/textViewImagenDescripcion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

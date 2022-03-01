@@ -38,48 +38,48 @@
                 app:layout_constraintTop_toTopOf="@+id/toolBarSingIn"
                 app:srcCompat="@drawable/back_64px" />
 
+            <TextView
+                android:id="@+id/textViewTitleSingIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/title_Crear_Cuenta"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/toolBarSingIn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/title_Crear_Cuenta" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <TextView
-        android:id="@+id/textViewTitleSingIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:text="@string/title_Crear_Cuenta"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/title_Crear_Cuenta" />
 
     <EditText
         android:id="@+id/editText_SingInNombre"
         android:layout_width="172dp"
         android:layout_height="47dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/SingIn_Nombre"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitleSingIn" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayoutSI" />
 
     <EditText
         android:id="@+id/editText_SingInApellido"
         android:layout_width="180dp"
         android:layout_height="47dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/SingIn_Apellido"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editText_SingInNombre"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitleSingIn" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayoutSI" />
 
     <EditText
         android:id="@+id/editTextSingInCorreo"

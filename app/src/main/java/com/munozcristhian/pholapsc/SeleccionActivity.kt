@@ -26,8 +26,8 @@ class SeleccionActivity : AppCompatActivity() {
     private lateinit var imagesRef: StorageReference
 
     // Images
-    private lateinit var animals: Array<String>
-    private lateinit var parties: IntArray
+    private lateinit var linksImages: Array<String>
+    private lateinit var localImages: IntArray
     private lateinit var onlineImagesAdapter: OnlineImagesAdapter
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var fotosSeleccionadas: MutableList<Int> = mutableListOf()
@@ -56,10 +56,10 @@ class SeleccionActivity : AppCompatActivity() {
         storage = Firebase.storage
         imagesRef = storage.reference.child("images/$uid")
 
-        animals = getAnimalsLinks()
-        parties = getPartyPics()
+        linksImages = WEB_IMAGES
+        localImages = LOCAL_IMAGES
 
-        onlineImagesAdapter = OnlineImagesAdapter(this, animals, R.layout.image_layout)
+        onlineImagesAdapter = OnlineImagesAdapter(this, linksImages, R.layout.image_layout)
         //resourceImagesAdapter = ResourceImagesAdapter(this, parties, R.layout.image_layout)
 
         layoutManager = GridLayoutManager(this, 2)
@@ -90,21 +90,24 @@ class SeleccionActivity : AppCompatActivity() {
 
 
         binding.imgViewCheck.setOnClickListener {
+
+            if(fotosSeleccionadas.size == 0){
+                Toast.makeText(this, "Debe seleccionar al menos 1 fotografía", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+
             val intent = Intent(this, CategoryActivity::class.java)
             val dialogBuilder = AlertDialog.Builder(this)
             dialogBuilder.setTitle("Solicitud de Impresión")
             val mensaje = "Has seleccionado " + fotosSeleccionadas.size + " fotos. \nSus fotografías serán entregadas en máximo 3 días laborables"
             dialogBuilder.setMessage(mensaje)
             dialogBuilder.setPositiveButton("Confirmar") { _, _ ->
+                Toast.makeText(this, "Solicitud de impresión realizada con éxito.", Toast.LENGTH_LONG).show()
                 //intention.putExtra("fotos", fotosSeleccionadas.toIntArray())
                 intent.putExtra(CURRENT_USER, usuario)
                 intent.putExtra(UID_USER, uid)
                 startActivity(intent)
-                Toast.makeText(
-                    this,
-                    "Solicitud de impresión realizada con éxito.",
-                    Toast.LENGTH_LONG
-                ).show()
             }
             dialogBuilder.setNegativeButton("Cancelar") { _, _ ->
                 //startActivity(intention)
@@ -127,8 +130,17 @@ class SeleccionActivity : AppCompatActivity() {
         }
     }
 
-    private fun getAnimalsLinks(): Array<String> {
+    private fun getWebImages(): Array<String> {
         return arrayOf(
+            "https://cdn0.bodas.com.mx/articles/images/real-wedding/2/2/1/r10_2x_1150609.jpg",
+            "https://cdn0.bodas.net/article-real-wedding/861/3_2/960/jpg/3297409.jpeg",
+            "https://www.jimdo.com/static/19ef43414529f3beb6f4c57637eb379f/c8d81/teaser.jpg",
+            "https://cdn0.bodas.com.mx/article-real-wedding/193/3_2/960/jpg/1232729.jpeg",
+            "https://static3.elcorreo.com/www/multimedia/201908/06/media/cortadas/B%26I-68-kBZE-U80920740627i7B-624x385@El%20Correo.jpg",
+            "https://static3.elcorreo.com/www/multimedia/202201/06/media/cortadas/patriciawithlove-957_websize-kp2E-U1604672148838nC-624x385@El%20Correo.jpg",
+            "https://media.vogue.mx/photos/618eb3c60fedaa9e9de852f0/4:3/w_1962,h_1472,c_limit/JCV07501.jpg",
+            "https://d2lcsjo4hzzyvz.cloudfront.net/blog/wp-content/uploads/2020/10/29155650/matrimonios-durante-el-COVID-19-760x507.jpg",
+            "https://www.unabodaoriginal.es/blog/wp-content/uploads/2021/06/bodas-nueva-normalidad-1200x900.jpg",
             "https://firebasestorage.googleapis.com/v0/b/pholapsc.appspot.com/o/images%2FLIleoK1JDRPkTcXUpWYT3lIqovB2%2Falbum1%2Fimg1.jpeg?alt=media&token=cf2a9d7d-4da2-4c66-9035-83784b103eff",
             "https://static.pexels.com/photos/86462/red-kite-bird-of-prey-milan-raptor-86462.jpeg",
             "https://static.pexels.com/photos/67508/pexels-photo-67508.jpeg",
@@ -138,26 +150,12 @@ class SeleccionActivity : AppCompatActivity() {
             "https://static.pexels.com/photos/62640/pexels-photo-62640.jpeg",
             "https://static.pexels.com/photos/38438/rattlesnake-toxic-snake-dangerous-38438.jpeg",
             "https://static.pexels.com/photos/33149/lemur-ring-tailed-lemur-primate-mammal.jpg",
-            "https://static.pexels.com/photos/1137/wood-animal-dog-pet.jpg",
-            "https://static.pexels.com/photos/40731/ladybug-drop-of-water-rain-leaf-40731.jpeg",
-            "https://static.pexels.com/photos/40860/spider-macro-insect-arachnid-40860.jpeg",
-            "https://static.pexels.com/photos/63282/crab-yellow-ocypode-quadrata-atlantic-ghost-crab-63282.jpeg",
-            "https://static.pexels.com/photos/45246/green-tree-python-python-tree-python-green-45246.jpeg",
-            "https://static.pexels.com/photos/39245/zebra-stripes-black-and-white-zoo-39245.jpeg",
-            "https://static.pexels.com/photos/92000/pexels-photo-92000.jpeg",
-            "https://static.pexels.com/photos/121445/pexels-photo-121445.jpeg",
-            "https://static.pexels.com/photos/112603/pexels-photo-112603.jpeg",
-            "https://static.pexels.com/photos/52961/antelope-nature-flowers-meadow-52961.jpeg",
-            "https://static.pexels.com/photos/36450/flamingo-bird-pink-nature.jpg",
-            "https://static.pexels.com/photos/20861/pexels-photo.jpg",
-            "https://static.pexels.com/photos/54108/peacock-bird-spring-animal-54108.jpeg",
-            "https://static.pexels.com/photos/24208/pexels-photo-24208.jpg"
         )
     }
 
 
 
-    private fun getPartyPics(): IntArray {
+    private fun getLocalImages(): IntArray {
         return intArrayOf(
             R.drawable.img1,
             R.drawable.img2,

@@ -44,18 +44,18 @@
                 tools:text="@string/nombrePerfil" />
 
             <ImageButton
-                android:id="@+id/imageButtonBack"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:id="@+id/imageButtonBack_Perfil"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="#FFFFFF"
-                android:scaleX="1"
-                android:scaleY="1"
+                android:scaleX="1.4"
+                android:scaleY="1.4"
                 app:layout_constraintBottom_toBottomOf="@+id/txtViewBarNombrePerfil"
-                app:srcCompat="@drawable/back_64px"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
                 tools:layout_editor_absoluteX="16dp" />
 
             <ImageButton
-                android:id="@+id/imageButtonEdit"
+                android:id="@+id/imageButtonSave_Update"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="64dp"
@@ -66,8 +66,11 @@
                 android:scaleY="0.8"
                 app:layout_constraintBottom_toBottomOf="@+id/txtViewBarNombrePerfil"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.666"
                 app:layout_constraintStart_toEndOf="@+id/txtViewBarNombrePerfil"
-                app:srcCompat="@drawable/_592815_compose_create_edit_edit_file_office_pencil_writing_107734" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/savetheapplication_guardar_2958" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -127,13 +130,13 @@
         app:layout_constraintTop_toBottomOf="@+id/txtViewPerfilBasico"
         app:srcCompat="@drawable/user_48px" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTxtNombreUsuario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/nombrePerfil"
@@ -155,7 +158,7 @@
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/location_52px" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTxtLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -174,18 +177,18 @@
         android:id="@+id/imgViewInformationPerfil"
         android:layout_width="23dp"
         android:layout_height="28dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@id/txtViewInformation"
         app:layout_constraintStart_toStartOf="@+id/imgViewLocationPerfil"
         app:layout_constraintTop_toBottomOf="@+id/editTxtLocation"
         app:srcCompat="@drawable/info_100px" />
 
-    <TextView
+    <EditText
         android:id="@+id/txtViewInformation"
         android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:paddingLeft="5dp"
         android:text="@string/perfilInformacion"
         android:textColor="#4C4C4C"
@@ -217,12 +220,12 @@
         app:layout_constraintTop_toTopOf="@+id/editTxtEmailPerfil"
         app:srcCompat="@drawable/mail_100px" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTxtEmailPerfil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/emailPerfil"
@@ -243,7 +246,7 @@
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/touchscreen_60px" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTxtPhonePerfil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -258,30 +261,25 @@
         app:layout_constraintStart_toEndOf="@+id/imgViewPhonePerfil"
         app:layout_constraintTop_toBottomOf="@+id/editTxtEmailPerfil" />
 
-    <TextView
-        android:id="@+id/txtViewGeneroPerfil"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:paddingLeft="5dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:text="@string/generoPerfil"
-        android:textColor="#4C4C4C"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTxtPhonePerfil"
-        app:layout_constraintStart_toEndOf="@id/imgViewGeneroPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtPhonePerfil"
-        tools:text="@string/generoPerfil" />
-
     <ImageView
         android:id="@+id/imgViewGeneroPerfil"
         android:layout_width="23dp"
         android:layout_height="28dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtViewGeneroPerfil"
-        app:layout_constraintEnd_toStartOf="@+id/txtViewGeneroPerfil"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/imgViewPhonePerfil"
         app:layout_constraintStart_toStartOf="@+id/imgViewPhonePerfil"
-        app:layout_constraintTop_toTopOf="@+id/txtViewGeneroPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/imgViewPhonePerfil"
         app:srcCompat="@drawable/male_and_female_64px" />
+
+    <Spinner
+        android:id="@+id/spinnerGeneros"
+        android:layout_width="187dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/editTxtPhonePerfil"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imgViewGeneroPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtPhonePerfil" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

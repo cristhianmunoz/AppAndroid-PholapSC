@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             val password = binding.editTextPassword.text.toString()
 
             autenticarUsuario(correo, password)
+
         }
 
         // Sig In
@@ -66,6 +67,13 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onPause() {
+        super.onPause()
+        finish()
+    }
+
+
 
     private fun isValidEmail(target: CharSequence): Boolean{
         return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
@@ -128,6 +136,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
     }
+
+
 
 
 

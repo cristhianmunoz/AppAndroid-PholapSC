@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="7dp">
-
+    android:layout_height="wrap_content"
+    android:paddingStart="12dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
         android:id="@+id/txtViewFecha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/SingInButton"
+        android:background="#ECC65148"
         android:text="@string/ListSession_Date"
-        android:textColor="#000000"
-        android:textSize="20dp"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="7dp"
         tools:layout_editor_absoluteY="27dp"
-        tools:text="@string/ListSession_Date"
-        tools:ignore="MissingConstraints" />
+        tools:text="@string/ListSession_Date" />
 
     <TextView
         android:id="@+id/txtViewHoraSessionList"
@@ -25,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="@string/ListSession_Hour"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/txtViewFecha"
         app:layout_constraintTop_toBottomOf="@+id/txtViewFecha"
         tools:text="@string/ListSession_Hour" />
@@ -47,7 +48,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="@string/ListSession_Places"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/txtViewFecha"
         tools:text="@string/ListSession_Places"/>
@@ -58,10 +59,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/ListSession_Dir"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/txtViewDireccionSessionLista"
         app:layout_constraintTop_toBottomOf="@+id/txtViewDireccionSessionLista"
         tools:text="@string/ListSession_Dir"/>
 
-
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="47dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtViewDireccionSessionLista"
+        app:srcCompat="@drawable/remove_50px" />
 </androidx.constraintlayout.widget.ConstraintLayout>

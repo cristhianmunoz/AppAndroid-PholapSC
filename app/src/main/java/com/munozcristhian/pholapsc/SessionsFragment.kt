@@ -6,6 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.munozcristhian.pholapsc.model.Sesion
+import com.munozcristhian.pholapsc.sessions.SessionsAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,8 +39,16 @@ class SessionsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sessions, container, false)
+        val view = inflater.inflate(R.layout.fragment_sessions, container, false);
+        var sesiones:ArrayList<Sesion> = arrayListOf<Sesion>()
+        sesiones.add(Sesion("Gazca E-45","12-03-2022","9:00AM","Eventos"))
+        sesiones.add(Sesion("Placar E-66","12-03-2022","13:00PM","Parejas"))
+        sesiones.add(Sesion("Recreo Entrada 5","20-03-2022","17:00PM","Singular"))
+        print(sesiones)
+        var recylcerViewSesiones:RecyclerView= view.findViewById(R.id.recyclerViewListSessions)
+        recylcerViewSesiones.layoutManager=LinearLayoutManager(context)
+        recylcerViewSesiones.adapter=SessionsAdapter(context!!,sesiones)
+        return view
     }
 
     companion object {

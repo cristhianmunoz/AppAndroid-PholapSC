@@ -126,6 +126,7 @@ class MainActivity : AppCompatActivity() {
                         )
                         CURRENT_USUARIO = usuario
                         CURRENT_UID = uid
+                        FIREBASE_AUTH = auth
                         //intencion.putExtra(CURRENT_USER, usuario)
                         //intencion.putExtra(UID_USER, uid)
                         startActivity(intencion)

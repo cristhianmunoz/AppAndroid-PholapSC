@@ -1,5 +1,8 @@
 package com.munozcristhian.pholapsc
 
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.munozcristhian.pholapsc.model.Usuario
 
 const val EXTRA_LOGIN = "EXTRA_LOGIN"
@@ -12,7 +15,7 @@ const val UID_USER = "UID_USER"
 const val IMAGEN_SELECCIONADA = "IMAGEN_SELECCIONADA"
 var CURRENT_USUARIO = Usuario()
 var CURRENT_UID = String()
-
+var FIREBASE_AUTH: FirebaseAuth = Firebase.auth
 val WEB_IMAGES = arrayOf(
     "https://cdn0.bodas.com.mx/articles/images/real-wedding/2/2/1/r10_2x_1150609.jpg",
     "https://cdn0.bodas.net/article-real-wedding/861/3_2/960/jpg/3297409.jpeg",
@@ -24,8 +27,6 @@ val WEB_IMAGES = arrayOf(
     "https://d2lcsjo4hzzyvz.cloudfront.net/blog/wp-content/uploads/2020/10/29155650/matrimonios-durante-el-COVID-19-760x507.jpg",
     "https://www.unabodaoriginal.es/blog/wp-content/uploads/2021/06/bodas-nueva-normalidad-1200x900.jpg",
     "https://firebasestorage.googleapis.com/v0/b/pholapsc.appspot.com/o/images%2FLIleoK1JDRPkTcXUpWYT3lIqovB2%2Falbum1%2Fimg1.jpeg?alt=media&token=cf2a9d7d-4da2-4c66-9035-83784b103eff",
-    "https://static.pexels.com/photos/86462/red-kite-bird-of-prey-milan-raptor-86462.jpeg",
-    "https://static.pexels.com/photos/67508/pexels-photo-67508.jpeg",
     "https://static.pexels.com/photos/55814/leo-animal-savannah-lioness-55814.jpeg",
     "https://static.pexels.com/photos/40745/red-squirrel-rodent-nature-wildlife-40745.jpeg",
     "https://static.pexels.com/photos/33392/portrait-bird-nature-wild.jpg",

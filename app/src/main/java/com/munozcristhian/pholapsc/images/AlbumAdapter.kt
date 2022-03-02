@@ -49,13 +49,13 @@ class AlbumAdapter (context: Context, animals: Array<String>, layout: Int) : Rec
     }
 
     class ViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
-        var image: ImageView = itemView.findViewById(R.id.imageViewLayout) as ImageView
-        //var textView: TextView = itemView.findViewById(R.id.textNombreAlbum) as TextView
+        var image: ImageView = itemView.findViewById(R.id.imageViewLayout1) as ImageView
+        var textView: TextView = itemView.findViewById(R.id.textNombreAlbum) as TextView
 
 
         init {
             itemView.setOnClickListener {
-                //listener.onItemClick(image, textView, adapterPosition)
+                listener.onItemClick(image, textView, adapterPosition)
             }
 
         }

@@ -74,6 +74,9 @@ class SessionsFragment : Fragment() {
                  val idSesion=it+1
                  dbRef.child(uid).child(idSesion.toString()).removeValue().addOnSuccessListener {
                      Toast.makeText(context,"Se canceló la sesión de manera exitosa.",Toast.LENGTH_LONG).show()
+                 }.addOnCompleteListener {
+                     this.sesiones.remove(sesiones[idSesion-1])
+                     recylcerViewSesiones.adapter!!.notifyItemRemoved(idSesion-1)
                  }
              }
          }

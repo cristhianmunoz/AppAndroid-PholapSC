@@ -4,27 +4,34 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.munozcristhian.pholapsc.R
 import com.munozcristhian.pholapsc.model.Sesion
 
 
-class SessionsAdapter(context: Context,listaSesiones:ArrayList<Sesion>):RecyclerView.Adapter<SessionsAdapter.ViewHolder>() {
+class SessionsAdapter(context: Context,listaSesiones:ArrayList<Sesion>,clickListener:(Int)->Unit):RecyclerView.Adapter<SessionsAdapter.ViewHolder>() {
     private val context:Context=context
     private val listaSesiones:ArrayList<Sesion> = listaSesiones
-
-    class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
+    private val clickListener:(Int)->Unit=clickListener
+    class ViewHolder(itemView:View, clickAtPosition:(Int)->Unit):RecyclerView.ViewHolder(itemView){
         var fechaSesion:TextView=itemView.findViewById(R.id.txtViewFecha) as TextView
         var horaSesion:TextView=itemView.findViewById(R.id.txtViewHoraSessionList) as TextView
         var direccionSesion:TextView=itemView.findViewById(R.id.txtViewDireccionSessionLista) as TextView
         var paqueteSesion:TextView=itemView.findViewById(R.id.txtViewPaqueteListaSesion) as TextView
-
+        var btnBorrar:ImageView=itemView.findViewById(R.id.imgViewBorrarSesion)
+        init{
+            itemView.findViewById<ImageView>(R.id.imgViewBorrarSesion).setOnClickListener {
+                clickAtPosition(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v:View = LayoutInflater.from(context).inflate(R.layout.session_item,parent,false)
-        return ViewHolder(v)
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.session_item,parent,false)){
+            clickListener(it)
+        }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

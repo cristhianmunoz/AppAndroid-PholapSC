@@ -83,10 +83,7 @@ class SessionActivity : AppCompatActivity(){
             val fecha = binding.editTextDate.text.toString()
             val hora = binding.editTextTime.text.toString()
             val paquete = binding.spinnerPaquete.selectedItem.toString()
-            //Log.d("SESION_LOG", "Sesion: $fecha, $fecha1 y $hora")
-
-            val session = Sesion(direccion, fecha, hora, paquete)
-
+            val session = Sesion(fecha,direccion, hora, paquete)
             // Realtime Database
             realtimeDatabase.child(numeroSesiones.toString()).setValue(session).addOnSuccessListener {
                 Toast.makeText(baseContext, "Los datos de la sesión se han guardado con exito", Toast.LENGTH_SHORT).show()

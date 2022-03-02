@@ -59,50 +59,8 @@ class SeleccionActivity : AppCompatActivity() {
             Log.d("SELECCION_LOG", "No hay extras para Seleccion")
         }
 
-        // Firebase Storage
-        storage = Firebase.storage
-        imagesRef = storage.reference.child(pathFolder)
-
-        // Listar albumes
-        imagesRef.listAll().addOnSuccessListener {
-            for(prefix in it.prefixes){
-                albumes.add(prefix.name)
-            }
-            //Log.d("SELECCION_LOG", "Lista:  ${albumes}")
-        }.addOnFailureListener {
-            // Uh-oh, an error occurred!
-        }.addOnCompleteListener {
-            // Listar fotos por album
-            for(album in albumes){
-                imagesRef.child(album).listAll().addOnSuccessListener {
-                    val fotos: MutableList<String> = mutableListOf()
-                    for(image in it.items){
-                        fotos.add(image.name)
-                    }
-                    albumesFotos[album] = fotos
-                    numeroFotos += albumesFotos[album]!!.size
-                }.addOnFailureListener {
-                    // Uh-oh, an error occurred!
-                }.addOnCompleteListener {
-                    for(album in albumesFotos.keys){
-                        for(imagen in albumesFotos[album]!!){
-                            // Descargar URL de cada imagen
-                            imagesRef.child(album).child(imagen).downloadUrl.addOnSuccessListener {
-                                Log.d("SELECCION_LOG", "URL encontrado $it")
-                                fotosFirebase.add(it.toString())
-                            }.addOnFailureListener {
-                                Log.d("SELECCION_LOG", "No se encontro la imagen")
-                            }.addOnCompleteListener {
-                                contador++
-                                if(contador==numeroFotos){
-                                    iniciarCargaFotos()
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        // Cargar desde FIrebase
+        cargarImagenes()
 
         binding.imgViewBackImpresion.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
@@ -147,7 +105,54 @@ class SeleccionActivity : AppCompatActivity() {
 
     }
 
-    private fun iniciarCargaFotos() {
+    private fun cargarImagenes() {
+        // Firebase Storage
+        storage = Firebase.storage
+        imagesRef = storage.reference.child(pathFolder)
+
+        // Listar albumes
+        imagesRef.listAll().addOnSuccessListener {
+            for(prefix in it.prefixes){
+                albumes.add(prefix.name)
+            }
+            //Log.d("SELECCION_LOG", "Lista:  ${albumes}")
+        }.addOnFailureListener {
+            // Uh-oh, an error occurred!
+        }.addOnCompleteListener {
+            // Listar fotos por album
+            for(album in albumes){
+                imagesRef.child(album).listAll().addOnSuccessListener {
+                    val fotos: MutableList<String> = mutableListOf()
+                    for(image in it.items){
+                        fotos.add(image.name)
+                    }
+                    albumesFotos[album] = fotos
+                    numeroFotos += albumesFotos[album]!!.size
+                }.addOnFailureListener {
+                    // Uh-oh, an error occurred!
+                }.addOnCompleteListener {
+                    for(album in albumesFotos.keys){
+                        for(imagen in albumesFotos[album]!!){
+                            // Descargar URL de cada imagen
+                            imagesRef.child(album).child(imagen).downloadUrl.addOnSuccessListener {
+                                Log.d("SELECCION_LOG", "URL encontrado $it")
+                                fotosFirebase.add(it.toString())
+                            }.addOnFailureListener {
+                                Log.d("SELECCION_LOG", "No se encontro la imagen")
+                            }.addOnCompleteListener {
+                                contador++
+                                if(contador==numeroFotos){
+                                    ingresarFotos()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun ingresarFotos() {
         //linksImages = WEB_IMAGES
         linksImages = fotosFirebase.toTypedArray()
         localImages = LOCAL_IMAGES

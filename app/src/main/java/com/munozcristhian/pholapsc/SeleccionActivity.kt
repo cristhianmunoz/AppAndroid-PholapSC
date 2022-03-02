@@ -33,7 +33,11 @@ class SeleccionActivity : AppCompatActivity() {
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var fotosSeleccionadas: MutableList<Int> = mutableListOf()
     private var fotosFirebase: MutableList<String> = mutableListOf()
+    private var albumes: MutableList<String> = mutableListOf()
     private lateinit var pathFolder: String
+    private var albumesFotos: HashMap<String, MutableList<String>> = HashMap()
+    private var contador: Int = 0
+    private var numeroFotos: Int = 0
 
     // Usuario
     private lateinit var uid: String
@@ -59,39 +63,46 @@ class SeleccionActivity : AppCompatActivity() {
         storage = Firebase.storage
         imagesRef = storage.reference.child(pathFolder)
 
-        imagesRef.child("album1/img1.jpeg").downloadUrl.addOnSuccessListener {
-            // Got the download URL for 'users/me/profile.png'
-            Log.d("SELECCION_LOG", "URL encontrado $it")
-            fotosFirebase.add(it.toString())
-        }.addOnFailureListener {
-            Log.d("SELECCION_LOG", "No se encontro la imagen")
-        }
-
-        linksImages = WEB_IMAGES
-        //linksImages = fotosFirebase.toTypedArray()
-        localImages = LOCAL_IMAGES
-
-        onlineImagesAdapter = OnlineImagesAdapter(this, linksImages, R.layout.image_layout)
-        //resourceImagesAdapter = ResourceImagesAdapter(this, parties, R.layout.image_layout)
-
-        layoutManager = GridLayoutManager(this, 2)
-
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = onlineImagesAdapter
-        onlineImagesAdapter.setOnItemClickListener(object: OnlineImagesAdapter.onItemClickListener {
-            override fun onItemClick(view: ImageView, check: CheckBox, position: Int) {
-                if(!check.isChecked){
-                    check.isChecked = true
-                    addFoto(position)
-                }else{
-                    check.isChecked = false
-                }
-                //Toast.makeText(this@SeleccionActivity, "Has seleccionado la imagen $position.", Toast.LENGTH_SHORT).show()
+        // Listar albumes
+        imagesRef.listAll().addOnSuccessListener {
+            for(prefix in it.prefixes){
+                albumes.add(prefix.name)
             }
-
-        })
-
+            //Log.d("SELECCION_LOG", "Lista:  ${albumes}")
+        }.addOnFailureListener {
+            // Uh-oh, an error occurred!
+        }.addOnCompleteListener {
+            // Listar fotos por album
+            for(album in albumes){
+                imagesRef.child(album).listAll().addOnSuccessListener {
+                    val fotos: MutableList<String> = mutableListOf()
+                    for(image in it.items){
+                        fotos.add(image.name)
+                    }
+                    albumesFotos[album] = fotos
+                    numeroFotos += albumesFotos[album]!!.size
+                }.addOnFailureListener {
+                    // Uh-oh, an error occurred!
+                }.addOnCompleteListener {
+                    for(album in albumesFotos.keys){
+                        for(imagen in albumesFotos[album]!!){
+                            // Descargar URL de cada imagen
+                            imagesRef.child(album).child(imagen).downloadUrl.addOnSuccessListener {
+                                Log.d("SELECCION_LOG", "URL encontrado $it")
+                                fotosFirebase.add(it.toString())
+                            }.addOnFailureListener {
+                                Log.d("SELECCION_LOG", "No se encontro la imagen")
+                            }.addOnCompleteListener {
+                                contador++
+                                if(contador==numeroFotos){
+                                    iniciarCargaFotos()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         binding.imgViewBackImpresion.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
@@ -134,6 +145,35 @@ class SeleccionActivity : AppCompatActivity() {
             startActivity(intention)
         }
 
+    }
+
+    private fun iniciarCargaFotos() {
+        //linksImages = WEB_IMAGES
+        linksImages = fotosFirebase.toTypedArray()
+        localImages = LOCAL_IMAGES
+
+        onlineImagesAdapter = OnlineImagesAdapter(this, linksImages, R.layout.image_layout)
+        //resourceImagesAdapter = ResourceImagesAdapter(this, parties, R.layout.image_layout)
+
+        layoutManager = GridLayoutManager(this, 2)
+
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.layoutManager = layoutManager
+        binding.recyclerView.adapter = onlineImagesAdapter
+
+        // Click en imagenes
+        onlineImagesAdapter.setOnItemClickListener(object: OnlineImagesAdapter.onItemClickListener {
+            override fun onItemClick(view: ImageView, check: CheckBox, position: Int) {
+                if(!check.isChecked){
+                    check.isChecked = true
+                    addFoto(position)
+                }else{
+                    check.isChecked = false
+                }
+                //Toast.makeText(this@SeleccionActivity, "Has seleccionado la imagen $position.", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 
     private fun addFoto(view: Int){

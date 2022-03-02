@@ -4,21 +4,21 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.munozcristhian.pholapsc.R
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
-class OnlineImagesAdapter(context: Context, animals: Array<String>, layout: Int) : RecyclerView.Adapter<OnlineImagesAdapter.ViewHolder>() {
+class AlbumAdapter (context: Context, animals: Array<String>, layout: Int) : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
     private val context: Context = context
     private val animals: Array<String> = animals
     private val layout: Int = layout
     private lateinit var mListener: onItemClickListener
 
-    interface  onItemClickListener {
-        fun onItemClick(view: ImageView, check: CheckBox, position: Int)
+    interface onItemClickListener {
+        fun onItemClick(view: ImageView, text: TextView, position: Int)
     }
 
     fun setOnItemClickListener(listener: onItemClickListener){
@@ -50,11 +50,12 @@ class OnlineImagesAdapter(context: Context, animals: Array<String>, layout: Int)
 
     class ViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
         var image: ImageView = itemView.findViewById(R.id.imageViewLayout) as ImageView
-        var checkbox: CheckBox = itemView.findViewById(R.id.checkboxImage) as CheckBox
+        //var textView: TextView = itemView.findViewById(R.id.textNombreAlbum) as TextView
+
 
         init {
             itemView.setOnClickListener {
-                listener.onItemClick(image, checkbox, adapterPosition)
+                //listener.onItemClick(image, textView, adapterPosition)
             }
 
         }

@@ -2,7 +2,6 @@ package com.munozcristhian.pholapsc
 
 import android.app.AlertDialog
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.CheckBox
@@ -11,15 +10,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.FirebaseApp
-import com.google.firebase.appcheck.FirebaseAppCheck
-import com.google.firebase.appcheck.debug.DebugAppCheckProviderFactory
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.munozcristhian.pholapsc.databinding.SeleccionImpresionBinding
-import com.munozcristhian.pholapsc.images.OnlineImagesAdapter
+import com.munozcristhian.pholapsc.images.SeleccionAdapter
 import com.munozcristhian.pholapsc.model.Usuario
 
 
@@ -33,11 +29,15 @@ class SeleccionActivity : AppCompatActivity() {
     // Images
     private lateinit var linksImages: Array<String>
     private lateinit var localImages: IntArray
-    private lateinit var onlineImagesAdapter: OnlineImagesAdapter
+    private lateinit var seleccionAdapter: SeleccionAdapter
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var fotosSeleccionadas: MutableList<Int> = mutableListOf()
     private var fotosFirebase: MutableList<String> = mutableListOf()
+    private var albumes: MutableList<String> = mutableListOf()
     private lateinit var pathFolder: String
+    private var albumesFotos: HashMap<String, MutableList<String>> = HashMap()
+    private var contador: Int = 0
+    private var numeroFotos: Int = 0
 
     // Usuario
     private lateinit var uid: String
@@ -59,43 +59,8 @@ class SeleccionActivity : AppCompatActivity() {
             Log.d("SELECCION_LOG", "No hay extras para Seleccion")
         }
 
-        // Firebase Storage
-        storage = Firebase.storage
-        imagesRef = storage.reference.child(pathFolder)
-
-        imagesRef.child("album1/img1.jpeg").downloadUrl.addOnSuccessListener {
-            // Got the download URL for 'users/me/profile.png'
-            Log.d("SELECCION_LOG", "URL encontrado $it")
-            fotosFirebase.add(it.toString())
-        }.addOnFailureListener {
-            Log.d("SELECCION_LOG", "No se encontro la imagen")
-        }
-
-        linksImages = WEB_IMAGES
-        //linksImages = fotosFirebase.toTypedArray()
-        localImages = LOCAL_IMAGES
-
-        onlineImagesAdapter = OnlineImagesAdapter(this, linksImages, R.layout.image_layout)
-        //resourceImagesAdapter = ResourceImagesAdapter(this, parties, R.layout.image_layout)
-
-        layoutManager = GridLayoutManager(this, 2)
-
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = onlineImagesAdapter
-        onlineImagesAdapter.setOnItemClickListener(object: OnlineImagesAdapter.onItemClickListener {
-            override fun onItemClick(view: ImageView, check: CheckBox, position: Int) {
-                if(!check.isChecked){
-                    check.isChecked = true
-                    addFoto(position)
-                }else{
-                    check.isChecked = false
-                }
-                //Toast.makeText(this@SeleccionActivity, "Has seleccionado la imagen $position.", Toast.LENGTH_SHORT).show()
-            }
-
-        })
-
+        // Cargar desde FIrebase
+        cargarImagenes()
 
         binding.imgViewBackImpresion.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
@@ -138,6 +103,82 @@ class SeleccionActivity : AppCompatActivity() {
             startActivity(intention)
         }
 
+    }
+
+    private fun cargarImagenes() {
+        // Firebase Storage
+        storage = Firebase.storage
+        imagesRef = storage.reference.child(pathFolder)
+
+        // Listar albumes
+        imagesRef.listAll().addOnSuccessListener {
+            for(prefix in it.prefixes){
+                albumes.add(prefix.name)
+            }
+            //Log.d("SELECCION_LOG", "Lista:  ${albumes}")
+        }.addOnFailureListener {
+            // Uh-oh, an error occurred!
+        }.addOnCompleteListener {
+            // Listar fotos por album
+            for(album in albumes){
+                imagesRef.child(album).listAll().addOnSuccessListener {
+                    val fotos: MutableList<String> = mutableListOf()
+                    for(image in it.items){
+                        fotos.add(image.name)
+                    }
+                    albumesFotos[album] = fotos
+                    numeroFotos += albumesFotos[album]!!.size
+                }.addOnFailureListener {
+                    // Uh-oh, an error occurred!
+                }.addOnCompleteListener {
+                    for(album in albumesFotos.keys){
+                        for(imagen in albumesFotos[album]!!){
+                            // Descargar URL de cada imagen
+                            imagesRef.child(album).child(imagen).downloadUrl.addOnSuccessListener {
+                                Log.d("SELECCION_LOG", "URL encontrado $it")
+                                fotosFirebase.add(it.toString())
+                            }.addOnFailureListener {
+                                Log.d("SELECCION_LOG", "No se encontro la imagen")
+                            }.addOnCompleteListener {
+                                contador++
+                                if(contador==numeroFotos){
+                                    ingresarFotos()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun ingresarFotos() {
+        //linksImages = WEB_IMAGES
+        linksImages = fotosFirebase.toTypedArray()
+        localImages = LOCAL_IMAGES
+
+        seleccionAdapter = SeleccionAdapter(this, linksImages, R.layout.image_seleccion_layout)
+        //resourceImagesAdapter = ResourceImagesAdapter(this, parties, R.layout.image_layout)
+
+        layoutManager = GridLayoutManager(this, 2)
+
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.layoutManager = layoutManager
+        binding.recyclerView.adapter = seleccionAdapter
+
+        // Click en imagenes
+        seleccionAdapter.setOnItemClickListener(object: SeleccionAdapter.onItemClickListener {
+            override fun onItemClick(view: ImageView, check: CheckBox, position: Int) {
+                if(!check.isChecked){
+                    check.isChecked = true
+                    addFoto(position)
+                }else{
+                    check.isChecked = false
+                }
+                //Toast.makeText(this@SeleccionActivity, "Has seleccionado la imagen $position.", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 
     private fun addFoto(view: Int){

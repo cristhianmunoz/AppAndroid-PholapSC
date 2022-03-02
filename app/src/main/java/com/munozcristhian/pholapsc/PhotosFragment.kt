@@ -1,7 +1,6 @@
 package com.munozcristhian.pholapsc
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,8 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.munozcristhian.pholapsc.images.OnlineImagesAdapter
+import com.munozcristhian.pholapsc.images.PhotoAdapter
+import com.munozcristhian.pholapsc.images.SeleccionAdapter
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -30,7 +30,7 @@ class PhotosFragment : Fragment() {
     private var param2: String? = null
 
     //Imagenes
-    private lateinit var onlineImagesAdapter: OnlineImagesAdapter
+    private lateinit var seleccionAdapter: PhotoAdapter
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var fotosSeleccionada: Int = -1
     private lateinit var linksImages: Array<String>
@@ -51,7 +51,7 @@ class PhotosFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_photos, container, false)
         linksImages = WEB_IMAGES
         val baseContext = this.requireContext()
-        onlineImagesAdapter = OnlineImagesAdapter(this.requireContext(), linksImages, R.layout.photo_layout)
+        seleccionAdapter = PhotoAdapter(this.requireContext(), linksImages, R.layout.photo_layout)
 
         layoutManager = GridLayoutManager(this.requireContext(), 2)
 
@@ -59,10 +59,10 @@ class PhotosFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewPhotos)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = onlineImagesAdapter
+        recyclerView.adapter = seleccionAdapter
 
-        onlineImagesAdapter.setOnItemClickListener(object: OnlineImagesAdapter.onItemClickListener {
-            override fun onItemClick(view: ImageView, check: CheckBox, position: Int) {
+        seleccionAdapter.setOnItemClickListener(object: PhotoAdapter.onItemClickListener {
+            override fun onItemClick(view: ImageView, position: Int) {
                 fotosSeleccionada = position
                 val intent = Intent(baseContext, InfoImageActivity::class.java)
                 intent.putExtra(IMAGEN_SELECCIONADA, position)

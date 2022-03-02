@@ -15,7 +15,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.munozcristhian.pholapsc.databinding.SeleccionImpresionBinding
-import com.munozcristhian.pholapsc.images.OnlineImagesAdapter
+import com.munozcristhian.pholapsc.images.SeleccionAdapter
 import com.munozcristhian.pholapsc.model.Usuario
 
 
@@ -29,7 +29,7 @@ class SeleccionActivity : AppCompatActivity() {
     // Images
     private lateinit var linksImages: Array<String>
     private lateinit var localImages: IntArray
-    private lateinit var onlineImagesAdapter: OnlineImagesAdapter
+    private lateinit var seleccionAdapter: SeleccionAdapter
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var fotosSeleccionadas: MutableList<Int> = mutableListOf()
     private var fotosFirebase: MutableList<String> = mutableListOf()
@@ -157,17 +157,17 @@ class SeleccionActivity : AppCompatActivity() {
         linksImages = fotosFirebase.toTypedArray()
         localImages = LOCAL_IMAGES
 
-        onlineImagesAdapter = OnlineImagesAdapter(this, linksImages, R.layout.image_layout)
+        seleccionAdapter = SeleccionAdapter(this, linksImages, R.layout.image_seleccion_layout)
         //resourceImagesAdapter = ResourceImagesAdapter(this, parties, R.layout.image_layout)
 
         layoutManager = GridLayoutManager(this, 2)
 
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = onlineImagesAdapter
+        binding.recyclerView.adapter = seleccionAdapter
 
         // Click en imagenes
-        onlineImagesAdapter.setOnItemClickListener(object: OnlineImagesAdapter.onItemClickListener {
+        seleccionAdapter.setOnItemClickListener(object: SeleccionAdapter.onItemClickListener {
             override fun onItemClick(view: ImageView, check: CheckBox, position: Int) {
                 if(!check.isChecked){
                     check.isChecked = true

@@ -1,5 +1,6 @@
 package com.munozcristhian.pholapsc
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -72,17 +73,30 @@ class SessionsFragment : Fragment() {
              recylcerViewSesiones.layoutManager=LinearLayoutManager(context)
              recylcerViewSesiones.adapter=SessionsAdapter(context!!,this.sesiones){
                  val idSesion=it+1
-                 dbRef.child(uid).child(idSesion.toString()).removeValue().addOnSuccessListener {
-                     Toast.makeText(context,"Se canceló la sesión de manera exitosa.",Toast.LENGTH_LONG).show()
-                 }.addOnCompleteListener {
-                     this.sesiones.remove(sesiones[idSesion-1])
-                     recylcerViewSesiones.adapter!!.notifyItemRemoved(idSesion-1)
-                 }
+                 AlertDialog.Builder(context).setMessage("Una vez que se cancele la sesión no podrá recuperarla\n ¿Desea continuar?")
+                     .setCancelable(false)
+                     .setPositiveButton("Sí"){
+                             dialog,id->
+                         dbRef.child(uid).child(idSesion.toString()).removeValue().addOnSuccessListener {
+                             Toast.makeText(context,"Sesión cacelada.",Toast.LENGTH_LONG).show()
+                         }.addOnCompleteListener {
+                             this.sesiones.remove(sesiones[idSesion-1])
+                             recylcerViewSesiones.adapter!!.notifyItemRemoved(idSesion-1)
+                         }
+                     }
+                     .setNegativeButton("No"){
+                             dialog,id->
+
+                     }.create().show()
              }
          }
          return view
     }
+    fun solicitarConfirmacionEliminar():Int{
+        var opcion=0
 
+        return opcion
+    }
     override fun onStart() {
         super.onStart()
         this.sesiones.clear()

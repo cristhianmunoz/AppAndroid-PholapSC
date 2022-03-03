@@ -6,19 +6,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.munozcristhian.pholapsc.images.PhotoAdapter
-import com.munozcristhian.pholapsc.images.SeleccionAdapter
-import com.munozcristhian.pholapsc.model.Usuario
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -44,10 +40,8 @@ class PhotosFragment : Fragment() {
     private lateinit var photoAdapter: PhotoAdapter
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var fotosSeleccionada: Int = -1
-    private lateinit var linksImages: Array<String>
     private lateinit var localImages: IntArray
     private var fotosSeleccionadas: MutableList<Int> = mutableListOf()
-    private var fotosFirebase: MutableList<String> = mutableListOf()
     private var albumes: MutableList<String> = mutableListOf()
     private lateinit var pathFolder: String
     private var albumesFotos: HashMap<String, MutableList<String>> = HashMap()
@@ -56,7 +50,6 @@ class PhotosFragment : Fragment() {
     //user
     // Usuario
     private lateinit var uid: String
-    private lateinit var usuario: Usuario
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -71,33 +64,14 @@ class PhotosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_photos, container, false)
-//        linksImages = WEB_IMAGES
-//        val baseContext = this.requireContext()
-//        photoAdapter = PhotoAdapter(this.requireContext(), linksImages, R.layout.photo_layout)
-//        layoutManager = GridLayoutManager(this.requireContext(), 2)
-//
+
         //Extras
-        var auth = Firebase.auth
-        uid=auth.uid.toString()
-        pathFolder="images/$uid"
-        //usuario= auth.currentUser
-//        val extras = intent.extras
-//        if (extras != null) {
-//            usuario = extras.get(CURRENT_USER) as Usuario
-//            uid = extras.getString(UID_USER) as String
-//            pathFolder = "images/$uid"
-//        }else{
-//            Log.d("SELECCION_LOG", "No hay extras para Seleccion")
-//        }
-//        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewPhotos)
-//        recyclerView.setHasFixedSize(true)
-//        recyclerView.layoutManager = layoutManager
-//        recyclerView.adapter = photoAdapter
-//        BEFORE INFALE
+        pathFolder="images/$CURRENT_UID"
         cargarImagenes()
         // Inflate the layout for this fragment
         return view
     }
+
     private fun cargarImagenes() {
         FIREBASE_IMAGES.clear()
 
@@ -109,6 +83,7 @@ class PhotosFragment : Fragment() {
         imagesRef.listAll().addOnSuccessListener {
             for(prefix in it.prefixes){
                 albumes.add(prefix.name)
+                LISTA_ALBUMES.add(prefix.name)
             }
             //Log.d("SELECCION_LOG", "Lista:  ${albumes}")
         }.addOnFailureListener {
@@ -130,7 +105,7 @@ class PhotosFragment : Fragment() {
                         for(imagen in albumesFotos[album]!!){
                             // Descargar URL de cada imagen
                             imagesRef.child(album).child(imagen).downloadUrl.addOnSuccessListener {
-                                Log.d("SELECCION_LOG", "URL encontrado $it")
+                                //Log.d("SELECCION_LOG", "URL encontrado $it")
                                 //fotosFirebase.add(it.toString())
                                 FIREBASE_IMAGES.add(it.toString())
                             }.addOnFailureListener {
@@ -161,7 +136,7 @@ class PhotosFragment : Fragment() {
 
     private fun ingresarFotos() {
         //linksImages = WEB_IMAGES
-        linksImages = fotosFirebase.toTypedArray()
+        //linksImages = fotosFirebase.toTypedArray()
         localImages = LOCAL_IMAGES
 
         photoAdapter = PhotoAdapter(context!!, FIREBASE_IMAGES.toTypedArray(), R.layout.photo_layout)
@@ -169,7 +144,7 @@ class PhotosFragment : Fragment() {
 
         layoutManager = GridLayoutManager(context, 2)
 
-        var recylcerViewFotos:RecyclerView=view!!.findViewById(R.id.recyclerViewPhotos)
+        val recylcerViewFotos:RecyclerView=view!!.findViewById(R.id.recyclerViewPhotos)
         recylcerViewFotos.setHasFixedSize(true)
         recylcerViewFotos.layoutManager=layoutManager
         recylcerViewFotos.adapter=photoAdapter

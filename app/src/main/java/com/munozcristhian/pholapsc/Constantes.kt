@@ -20,8 +20,8 @@ const val NOMBRE_ALBUM = "NOMBRE_ALBUM"
 var CURRENT_USUARIO = Usuario()
 var CURRENT_UID = String()
 var FIREBASE_AUTH: FirebaseAuth = Firebase.auth
-
 var FIREBASE_IMAGES: MutableList<String> = mutableListOf()
+var LISTA_ALBUMES: MutableList<String> = mutableListOf()
 
 val WEB_IMAGES = arrayOf(
     "https://cdn0.bodas.com.mx/articles/images/real-wedding/2/2/1/r10_2x_1150609.jpg",

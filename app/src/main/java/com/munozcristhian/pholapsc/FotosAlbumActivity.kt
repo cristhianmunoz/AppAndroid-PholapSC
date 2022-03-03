@@ -17,6 +17,7 @@ class FotosAlbumActivity : AppCompatActivity() {
     private var fotosAlbum: Array<String> = arrayOf()
     private lateinit var photoAdapter: PhotoAdapter
     private var layoutManager: RecyclerView.LayoutManager? = null
+    private var nombreAlbum: String = String()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +28,8 @@ class FotosAlbumActivity : AppCompatActivity() {
         val extras = intent.extras
         if (extras != null) {
             fotosAlbum = extras.getStringArray(FOTOS_ALBUM) as Array<String>
+            nombreAlbum = extras.getString(NOMBRE_ALBUM) as String
+            binding.txtViewTituloAlbum.text = nombreAlbum
         }else{
             Log.d("FOTOS_ALBUM_LOG", "No hay extras para FOTOS_ALBUM")
         }

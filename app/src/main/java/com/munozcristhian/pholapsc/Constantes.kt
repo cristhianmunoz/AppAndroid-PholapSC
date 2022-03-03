@@ -14,6 +14,9 @@ const val CURRENT_USER = "CURRENT_USER"
 const val UID_USER = "UID_USER"
 const val IMAGEN_SELECCIONADA = "IMAGEN_SELECCIONADA"
 const val FOTOS_ALBUM = "FOTOS_ALBUM"
+const val NOMBRE_ALBUM = "NOMBRE_ALBUM"
+
+
 var CURRENT_USUARIO = Usuario()
 var CURRENT_UID = String()
 var FIREBASE_AUTH: FirebaseAuth = Firebase.auth

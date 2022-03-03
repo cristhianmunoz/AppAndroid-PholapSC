@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.munozcristhian.pholapsc.LISTA_ALBUMES
 import com.munozcristhian.pholapsc.R
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -31,6 +32,7 @@ class AlbumAdapter (context: Context, animals: Array<String>, layout: Int) : Rec
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.textView.text = LISTA_ALBUMES[position]
         Picasso.get().load(animals[position]).fit()
             .placeholder(R.drawable.spinner)
             .error(android.R.drawable.stat_notify_error)

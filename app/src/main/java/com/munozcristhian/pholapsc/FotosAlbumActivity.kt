@@ -55,5 +55,11 @@ class FotosAlbumActivity : AppCompatActivity() {
             }
 
         })
+
+        // Back
+        binding.imgViewBackAlbum.setOnClickListener {
+            val intention = Intent(this, CategoryActivity::class.java)
+            startActivity(intention)
+        }
     }
 }

@@ -28,7 +28,7 @@ class InfoImageActivity : AppCompatActivity() {
             val texto = "Imagen $posicionImagen"
             binding.textViewNombreFoto.text = texto
             binding.textViewImagenDescripcion.text = WEB_IMAGES[posicionImagen]
-            Picasso.get().load(WEB_IMAGES[posicionImagen]).into(binding.imageViewPhoto)
+            Picasso.get().load(FIREBASE_IMAGES[posicionImagen]).into(binding.imageViewPhoto)
         }else{
             Log.d("INFO_IMAGEN_LOG", "No hay extras para Info Imagen")
         }

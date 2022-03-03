@@ -13,9 +13,13 @@ const val PASSWORD_LENGHT = 8
 const val CURRENT_USER = "CURRENT_USER"
 const val UID_USER = "UID_USER"
 const val IMAGEN_SELECCIONADA = "IMAGEN_SELECCIONADA"
+const val FOTOS_ALBUM = "FOTOS_ALBUM"
 var CURRENT_USUARIO = Usuario()
 var CURRENT_UID = String()
 var FIREBASE_AUTH: FirebaseAuth = Firebase.auth
+
+var FIREBASE_IMAGES: MutableList<String> = mutableListOf()
+
 val WEB_IMAGES = arrayOf(
     "https://cdn0.bodas.com.mx/articles/images/real-wedding/2/2/1/r10_2x_1150609.jpg",
     "https://cdn0.bodas.net/article-real-wedding/861/3_2/960/jpg/3297409.jpeg",

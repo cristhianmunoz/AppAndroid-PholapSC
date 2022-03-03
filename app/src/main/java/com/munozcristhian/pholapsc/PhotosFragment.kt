@@ -99,6 +99,8 @@ class PhotosFragment : Fragment() {
         return view
     }
     private fun cargarImagenes() {
+        FIREBASE_IMAGES.clear()
+
         // Firebase Storage
         storage = Firebase.storage
         imagesRef = storage.reference.child(pathFolder)
@@ -129,33 +131,14 @@ class PhotosFragment : Fragment() {
                             // Descargar URL de cada imagen
                             imagesRef.child(album).child(imagen).downloadUrl.addOnSuccessListener {
                                 Log.d("SELECCION_LOG", "URL encontrado $it")
-                                fotosFirebase.add(it.toString())
+                                //fotosFirebase.add(it.toString())
+                                FIREBASE_IMAGES.add(it.toString())
                             }.addOnFailureListener {
                                 Log.d("SELECCION_LOG", "No se encontro la imagen")
                             }.addOnCompleteListener {
                                 contador++
                                 if(contador==numeroFotos){
-                                    //linksImages = WEB_IMAGES
-                                    linksImages = fotosFirebase.toTypedArray()
-                                    localImages = LOCAL_IMAGES
-
-                                    photoAdapter = PhotoAdapter(context!!, linksImages, R.layout.photo_layout)
-                                    //resourceImagesAdapter = ResourceImagesAdapter(this, parties, R.layout.image_layout)
-
-                                    layoutManager = GridLayoutManager(context, 2)
-
-                                    var recylcerViewFotos:RecyclerView=view!!.findViewById(R.id.recyclerViewPhotos)
-                                    recylcerViewFotos.setHasFixedSize(true)
-                                    recylcerViewFotos.layoutManager=layoutManager
-                                    recylcerViewFotos.adapter=photoAdapter
-                                    // Click en imagenes
-                                    photoAdapter.setOnItemClickListener(object: PhotoAdapter.onItemClickListener {
-
-                                        override fun onItemClick(view: ImageView, position: Int) {
-                                            addFoto(position)
-                                        }
-
-                                    })
+                                    ingresarFotos()
                                     photoAdapter.setOnItemClickListener(object: PhotoAdapter.onItemClickListener {
                                         override fun onItemClick(view: ImageView, position: Int) {
                                             fotosSeleccionada = position
@@ -181,7 +164,7 @@ class PhotosFragment : Fragment() {
         linksImages = fotosFirebase.toTypedArray()
         localImages = LOCAL_IMAGES
 
-        photoAdapter = PhotoAdapter(context!!, linksImages, R.layout.photo_layout)
+        photoAdapter = PhotoAdapter(context!!, FIREBASE_IMAGES.toTypedArray(), R.layout.photo_layout)
         //resourceImagesAdapter = ResourceImagesAdapter(this, parties, R.layout.image_layout)
 
         layoutManager = GridLayoutManager(context, 2)

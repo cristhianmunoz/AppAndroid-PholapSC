@@ -97,6 +97,9 @@
     <string name="InfoPhoto_title">Boda_1</string>
     <string name="InfoPhoto_description">Usuario x descripcion, descripcion,descripcion,descripcion...</string>
 
+    <!-- Albumes -->
+    <string name="titulo_album">Titulo del Album</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

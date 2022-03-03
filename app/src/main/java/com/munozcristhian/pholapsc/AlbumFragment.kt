@@ -43,6 +43,7 @@ class AlbumFragment : Fragment() {
     private lateinit var storage: FirebaseStorage
     private lateinit var imagesRef: StorageReference
     //Imagenes
+    private lateinit var photoAdapter: PhotoAdapter
     private lateinit var albumAdapter: AlbumAdapter
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var fotosSeleccionada: Int = -1
@@ -82,12 +83,12 @@ class AlbumFragment : Fragment() {
         uid=auth.uid.toString()
         pathFolder="images/$uid"
 
-        cargarImagenes()
+        cargarAlbum()
         // Inflate the layout for this fragment
         return view
     }
 
-    private fun cargarImagenes() {
+    private fun cargarAlbum() {
         // Firebase Storage
         storage = Firebase.storage
         imagesRef = storage.reference.child(pathFolder)
@@ -147,6 +148,84 @@ class AlbumFragment : Fragment() {
                                     })
                                     albumAdapter.setOnItemClickListener(object: AlbumAdapter.onItemClickListener {
                                         override fun onItemClick(view: ImageView,text:TextView, position: Int) {
+                                            /*fotosSeleccionada = position
+                                            val intent = Intent(context, InfoImageActivity::class.java)
+                                            intent.putExtra(IMAGEN_SELECCIONADA, position)
+                                            startActivity(intent)*/
+                                            cargarImagenes()
+                                            //Toast.makeText(this@SeleccionActivity, "Has seleccionado la imagen $position.", Toast.LENGTH_SHORT).show()
+                                        }
+
+                                    })
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun cargarImagenes() {
+        // Firebase Storage
+        storage = Firebase.storage
+        imagesRef = storage.reference.child(pathFolder)
+
+        // Listar albumes
+        imagesRef.listAll().addOnSuccessListener {
+            for(prefix in it.prefixes){
+                albumes.add(prefix.name)
+            }
+            //Log.d("SELECCION_LOG", "Lista:  ${albumes}")
+        }.addOnFailureListener {
+            // Uh-oh, an error occurred!
+        }.addOnCompleteListener {
+            // Listar fotos por album
+            for(album in albumes){
+                imagesRef.child(album).listAll().addOnSuccessListener {
+                    val fotos: MutableList<String> = mutableListOf()
+                    for(image in it.items){
+                        fotos.add(image.name)
+                    }
+                    albumesFotos[album] = fotos
+                    numeroFotos += albumesFotos[album]!!.size
+                }.addOnFailureListener {
+                    // Uh-oh, an error occurred!
+                }.addOnCompleteListener {
+                    for(album in albumesFotos.keys){
+                        for(imagen in albumesFotos[album]!!){
+                            // Descargar URL de cada imagen
+                            imagesRef.child(album).child(imagen).downloadUrl.addOnSuccessListener {
+                                Log.d("SELECCION_LOG", "URL encontrado $it")
+                                fotosFirebase.add(it.toString())
+                            }.addOnFailureListener {
+                                Log.d("SELECCION_LOG", "No se encontro la imagen")
+                            }.addOnCompleteListener {
+                                contador++
+                                if(contador==numeroFotos){
+                                    //linksImages = WEB_IMAGES
+                                    linksImages = fotosFirebase.toTypedArray()
+                                    localImages = LOCAL_IMAGES
+
+                                    albumAdapter = AlbumAdapter(context!!, linksImages, R.layout.album_layout)
+                                    //resourceImagesAdapter = ResourceImagesAdapter(this, parties, R.layout.image_layout)
+
+                                    layoutManager = GridLayoutManager(context, 2)
+
+                                    var recylcerViewFotos:RecyclerView=view!!.findViewById(R.id.recyclerViewAlbum)
+                                    recylcerViewFotos.setHasFixedSize(true)
+                                    recylcerViewFotos.layoutManager=layoutManager
+                                    recylcerViewFotos.adapter=albumAdapter
+                                    // Click en imagenes
+                                    albumAdapter.setOnItemClickListener(object: AlbumAdapter.onItemClickListener {
+
+                                        override fun onItemClick(view: ImageView,text: TextView, position: Int) {
+                                            addFoto(position)
+                                        }
+
+                                    })
+                                    albumAdapter.setOnItemClickListener(object: AlbumAdapter.onItemClickListener {
+                                        override fun onItemClick(view: ImageView,text: TextView, position: Int) {
                                             fotosSeleccionada = position
                                             val intent = Intent(context, InfoImageActivity::class.java)
                                             intent.putExtra(IMAGEN_SELECCIONADA, position)
@@ -162,6 +241,12 @@ class AlbumFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun addFoto(view: Int){
+        if(!fotosSeleccionadas.any {it == view}){
+            fotosSeleccionadas.add(view)
         }
     }
 

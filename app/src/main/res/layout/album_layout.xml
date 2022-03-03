@@ -17,6 +17,7 @@
         android:id="@+id/textNombreAlbum"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="180dp" />
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLayout1"
+        tools:layout_editor_absoluteX="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

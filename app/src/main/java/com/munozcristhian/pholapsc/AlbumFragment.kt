@@ -97,6 +97,7 @@ class AlbumFragment : Fragment() {
         imagesRef.listAll().addOnSuccessListener {
             for(prefix in it.prefixes){
                 albumes.add(prefix.name)
+                LISTA_ALBUMES.add(prefix.name)
             }
             //Log.d("SELECCION_LOG", "Lista:  ${albumes}")
         }.addOnFailureListener {

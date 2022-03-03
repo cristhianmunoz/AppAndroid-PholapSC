@@ -56,16 +56,18 @@ class SessionsFragment : Fragment() {
          val database = Firebase.database
          val dbRef = database.getReference("Sesiones");
          dbRef.child(uid).get().addOnSuccessListener {
-             Log.i("firebase", "Got value ${it.value}")
-             var sesioneslist:ArrayList<Sesion>  = it.value as ArrayList<Sesion>
-             val l =it.getValue<ArrayList<Sesion>>();
-             for(i in l!!.indices){
-                 if(l!![i]!=null){
-                     Log.i("sesion",l!![i].toString())
-                     this.sesiones.add(l!![i])
+             if(it.value!=null){
+                 Log.i("firebase", "Got value ${it.value}")
+                 var sesioneslist:ArrayList<Sesion>  = it.value as ArrayList<Sesion>
+                 val l =it.getValue<ArrayList<Sesion>>();
+                 for(i in l!!.indices){
+                     if(l!![i]!=null){
+                         Log.i("sesion",l!![i].toString())
+                         this.sesiones.add(l!![i])
+                     }
                  }
+                 Log.i("seseiones", " ${sesiones}")
              }
-             Log.i("seseiones", " ${sesiones}")
          }.addOnFailureListener{
              Log.e("firebase", "Error getting data", it)
          }.addOnCompleteListener {

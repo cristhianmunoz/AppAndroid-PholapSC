@@ -54,12 +54,15 @@ class AlbumFragment : Fragment() {
     private var fotosFirebase: MutableList<String> = mutableListOf()
     private var fotosFirebasealbum: MutableList<String> = mutableListOf()
     private var albumes: MutableList<String> = mutableListOf()
+    private var photoalbumes: MutableList<String> = mutableListOf()
     private lateinit var pathFolder: String
     private var albumesFotos: HashMap<String, MutableList<String>> = HashMap()
-    private var albumesFotos1: HashMap<String, MutableList<String>> = HashMap()
+    private var albumesFotosv: HashMap<String, MutableList<String>> = HashMap()
     private var contador: Int = 0
+    private var contadorv: Int = 0
     private var numeroFotos: Int = 0
-    private var numeroFotos1: Int = 0
+    private var numeroFotosv: Int = 0
+
     //user
     // Usuario
     private lateinit var uid: String
@@ -147,6 +150,7 @@ class AlbumFragment : Fragment() {
                                     recylcerViewFotos.setHasFixedSize(true)
                                     recylcerViewFotos.layoutManager=layoutManager
                                     recylcerViewFotos.adapter=albumAdapter
+                                    cargarImagenesalbum()
                                     // Click en imagenes
                                     albumAdapter.setOnItemClickListener(object: AlbumAdapter.onItemClickListener {
 
@@ -157,10 +161,10 @@ class AlbumFragment : Fragment() {
                                     })
                                     albumAdapter.setOnItemClickListener(object: AlbumAdapter.onItemClickListener {
                                         override fun onItemClick(view: ImageView,text:TextView, position: Int) {
-                                            cargarImagenesalbum()
+
                                             albumSeleccionado= position
                                             val intent = Intent(context, FotosAlbumActivity::class.java).apply {
-                                                putExtra(FOTOS_ALBUM,linksImages)
+                                                putExtra(FOTOS_ALBUM,linksImagesalbum)
                                                 putExtra(NOMBRE_ALBUM,albumes[albumSeleccionado])
                                             }
                                             startActivity(intent)
@@ -185,26 +189,26 @@ class AlbumFragment : Fragment() {
         // Listar albumes
         imagesRef.listAll().addOnSuccessListener {
             for (prefix in it.prefixes) {
-                albumes.add(prefix.name)
+                photoalbumes.add(prefix.name)
             }
             //Log.d("SELECCION_LOG", "Lista:  ${albumes}")
         }.addOnFailureListener {
             // Uh-oh, an error occurred!
         }.addOnCompleteListener {
             // Listar fotos por album
-            for (album in albumes) {
+            for (album in photoalbumes) {
                 imagesRef.child(album).listAll().addOnSuccessListener {
                     val fotos: MutableList<String> = mutableListOf()
                     for (image in it.items) {
                         fotos.add(image.name)
                     }
-                    albumesFotos[album] = fotos
-                    numeroFotos += albumesFotos[album]!!.size
+                    albumesFotosv[album] = fotos
+                    numeroFotosv += albumesFotosv[album]!!.size
                 }.addOnFailureListener {
                     // Uh-oh, an error occurred!
                 }.addOnCompleteListener {
-                    for (album in albumesFotos.keys) {
-                        for (imagen in albumesFotos[album]!!) {
+                    for (album in albumesFotosv.keys) {
+                        for (imagen in albumesFotosv[album]!!) {
                             // Descargar URL de cada imagen
                             imagesRef.child(album).child(imagen).downloadUrl.addOnSuccessListener {
                                 Log.d("SELECCION_LOG", "URL encontrado $it")
@@ -212,10 +216,10 @@ class AlbumFragment : Fragment() {
                             }.addOnFailureListener {
                                 Log.d("SELECCION_LOG", "No se encontro la imagen")
                             }.addOnCompleteListener {
-                                contador++
-                                if (contador == numeroFotos) {
+                                contadorv++
+                                if (contadorv == numeroFotosv) {
                                     //linksImages = WEB_IMAGES
-                                    linksImages = fotosFirebase.toTypedArray()
+                                    linksImagesalbum = fotosFirebasealbum.toTypedArray()
                                     //localImages = LOCAL_IMAGES
                                 }
                             }
